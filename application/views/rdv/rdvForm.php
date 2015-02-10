@@ -21,17 +21,32 @@
 
 		echo form_open('RendezVous/saveRDV/'.$numerodossier); 
 
-		$date = array('name'=>'date','value'=>'','placeholder'=>'Date *', 'data-beatpicker' => 'true', 'data-beatpicker-position' => "['right','bottom']"); 
-	
-		$heure = array('name' => 'heure', 'value' => '', 'placeholder' => 'Heure *', 'class' => 'splitField', 'maxlength' => '2');
-		$minute = array('name' => 'minute', 'value' => '', 'placeholder' => 'Minute *' , 'class' => 'splitField', 'maxlength' => '2');
+		$date = array('name'=>'date','value'=>'','placeholder'=>'Date *', 'data-beatpicker' => 'true', 'data-beatpicker-position' => "['right','bottom']");
+		$h = array('name' => 'heure', 'value' => '', 'placeholder' => 'Heure *', 'class' => 'splitField', 'maxlength' => '2');
+		$m = array('name' => 'minute', 'value' => '', 'placeholder' => 'Minute *' , 'class' => 'splitField', 'maxlength' => '2');
 
 	?>	
 
 	<p class="label"> <?php echo form_input($date); ?> </p>
-	<p class="label"> <?php echo form_input($heure);
+	<br/>
+	<p class="label"> <?php 
+
+						foreach ( $heure as $key ) {
+							foreach ($key as $val ) {
+								$data[] = $val;
+							}
+						}
+							echo form_dropdown('heure',$data);
+
 							echo form_label(':');
-							echo form_input($minute);
+
+						foreach ( $minute as $key ) {
+							foreach ($key as $val ) {
+								$options[] = $val;
+							}
+						}
+
+							echo form_dropdown('minute',$options);
 					  ?> </p>
 
 	<br/>

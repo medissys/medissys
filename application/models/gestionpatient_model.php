@@ -7,6 +7,7 @@ class Gestionpatient_model extends CI_Model{
 	protected $tableJ = 'jours';
 	protected $tableM = 'mois';
 	protected $tableA = 'annee';
+	protected $tableC = 'consultation';
 
 	public function getCivilite(){
 		
@@ -155,10 +156,19 @@ class Gestionpatient_model extends CI_Model{
 						->result();
 	}
 
-	public function getDataBoard($numDossier){
+	/*public function getDataBoard($numDossier){
 
 		return $this->db->select('*')
 						->from($this->tableP)
+						->where('numerodossier',$numDossier)
+						->get()
+						->result();
+	}*/
+
+	public function getDataBoard($numDossier){
+
+		return $this->db->select('*')
+						->from($this->tableC)
 						->where('numerodossier',$numDossier)
 						->get()
 						->result();

@@ -43,9 +43,9 @@
 
 			<tr>
 				<td><?php echo ++$i; ?></td>
-				<td><?php echo $value->datecreation; ?> </td>
-				<td><?php echo $value->symptome; ?> </td>
-				<td><?php echo $value->observation; ?> </td>
+				<td><?php echo $value->dateconsultation; ?> </td>
+				<td><?php echo $value->symptomes; ?> </td>
+				<td><?php echo $value->observations; ?> </td>
 				<td><?php echo $value->commentaires; ?> </td>
 			</tr>
 			<?php } ?>

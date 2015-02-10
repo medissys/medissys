@@ -164,16 +164,11 @@ class Consultation extends CI_Controller{
 				// 		);
 				$i = 0;
 
-				//echo print_r($resSelect);
-
-				//echo 'test';
 				foreach ($resSelect as $key) {
 					
 					$data['row'][$i] = $resSelect[$i];
 					$i++; 
 				}
-
-				//print_r($data);
 
 				$this->layout->view('consultation/consultation_success',$data);
 			}

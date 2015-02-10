@@ -38,7 +38,17 @@ class RendezVous extends CI_Controller{
 	
 	public function planning(){
 
-		$this->layout->view('rdv/planning');
+		$res = $this->RendezVous_model->getallRDV();
+
+		$i = 0;
+
+		foreach ($res as $key => $value) {
+			
+			$data['row'][$i] = $value;
+			$i++;
+		}
+
+		$this->layout->view('rdv/planning',$data);
 	}
 
 	public function nouveauRDV(){
@@ -61,11 +71,18 @@ class RendezVous extends CI_Controller{
 
 	public function ouvrirDossier($index){
 
+		$heure = $this->loadHeure();
+		$minute = $this->loadMinute();
+
 		$this->session->set_userdata('indice',$index);
 
 		$res = $this->RendezVous_model->getData($index);
 
 		$res[0]->error = '';
+
+		$res[0]->heure = $heure;
+
+		$res[0]->minute = $minute;
 
 		$this->layout->view('rdv/rdvForm',$res[0]);
 
@@ -74,6 +91,13 @@ class RendezVous extends CI_Controller{
 	public function saveRDV($index){
 
 		$res = $this->RendezVous_model->getData($index);
+
+
+		$heure = $this->loadHeure();
+		$minute = $this->loadMinute();
+
+		$res[0]->heure = $heure;
+		$res[0]->minute = $minute;
 
 		$d = $this->input->post('date');
 		$h = $this->input->post('heure');
@@ -86,7 +110,7 @@ class RendezVous extends CI_Controller{
 						'field' => 'date',
 						'label' => '',
 						'rules' => 'trim|callback_check_required|xss_clean'
-					),
+					)/*,
 					array(
 						'field' => 'heure',
 						'label' => '',
@@ -96,7 +120,7 @@ class RendezVous extends CI_Controller{
 						'field' => 'minute',
 						'label' => '',
 						'rules' => 'trim|callback_check_required|xss_clean'
-					)
+					)*/
 				  );
 
 		$this->form_validation->set_rules($config);
@@ -110,22 +134,36 @@ class RendezVous extends CI_Controller{
 
 			$this->layout->view('rdv/rdvForm',$res[0]);
 
-		}else{
-
-			if ( !is_numeric($h) || !is_numeric($m)){
-
-				$res[0]->error = "Veuillez entrer une heure correcte";
-
-				$this->layout->view('rdv/rdvForm',$res[0]);
-			}
-			elseif ($isCorrect) {
-				echo 'heure correcte';
-			}
-			else{
-				echo 'heure incorrecte';
-			}
-
 		}
+		else{
+
+			$resH = $this->RendezVous_model->matchHeure($h);
+			$resM = $this->RendezVous_model->matchMinute($m+1);
+
+			/* Après reformattage date / Heure, on insère en base */
+
+			$indb = $this->RendezVous_model->insertRdv($d,$resH[0]->heure,$resM[0]->minutes,$index);
+
+			if ( $indb ){
+
+				$this->planning();
+			}
+		}
+
+	}
+
+	public function loadHeure(){
+
+		$heure = $this->RendezVous_model->getHeure();
+
+		return $heure;
+	}
+
+	public function loadMinute(){
+
+		$minute = $this->RendezVous_model->getMinute();
+
+		return $minute;
 
 	}
 

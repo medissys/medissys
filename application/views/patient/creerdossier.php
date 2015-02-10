@@ -100,7 +100,7 @@
 
 <?php 
       echo css_url('designComponent');
-      echo css_url('designComponent');
+      //echo css_url('designComponent');
       //echo js_url('jquery-2.min');
 	    //echo js_url('loader');
 ?>

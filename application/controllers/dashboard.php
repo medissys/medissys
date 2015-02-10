@@ -13,6 +13,9 @@ class Dashboard extends CI_Controller{
 		$this->load->library('layout');
 
 		$this->load->model('Dashboard_model');
+		$this->load->model('RendezVous_model');
+
+		$this->layout->ajouter_css('layout');
 
 		setlocale(LC_TIME, "fr_FR");
 
@@ -34,10 +37,19 @@ class Dashboard extends CI_Controller{
 
 	public function acceuil(){
 
-		$this->layout->ajouter_css('layout');
 		$this->layout->getId($this->session->userdata('nom'));
 
-		$this->layout->view('acceuil');
+		$res = $this->RendezVous_model->getallRDV();
+
+		$i = 0;
+
+		foreach ($res as $key => $value) {
+			
+			$data['row'][$i] = $value;
+			$i++;
+		}
+
+		$this->layout->view('acceuil',$data);
 
 	}
 }

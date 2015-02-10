@@ -9,27 +9,30 @@
 <div class="dashboard">
 	<p class="board"> DASHBOARD </p>
 	<table> 
-	<thead>
-	<tr>
-		<th>N° DOSSIER</th>
-		<th>NOM</th>
-		<th>PRENOM</th>
-		<th>DATE RDV</th>
-		<th>MEDECIN TRAITANT</th>
-		<th>STATUT</th>
-	</tr>
-	</thead>
-	<tbody>
-	<?php //TODO: Récupérer les informations en base ?>
-	<tr>
-		<td> </td>
-		<td> </td>
-		<td> </td>
-		<td> </td>
-		<td> </td>
-		<td> </td>
-	</tr>
-	</tbody>
+		<thead>
+			<tr>
+				<th>N° DOSSIER</th>
+				<th>NOM</th>
+				<th>PRENOM</th>
+				<th>DATE</th>
+				<th>HEURE</th>
+				<th>STATUT</th>
+			</tr>
+		</thead>
+		<tbody> 
+		<?php foreach ($row as $key => $value) {
+
+		?>
+			<tr>
+				<td> <strong> <?php echo $value->num_dossier; ?> </strong> </td>
+				<td> <?php echo $value->nom; ?> </td>
+				<td> <?php echo $value->prenom;?> </td>
+				<td> <?php echo $value->date; ?> </td>
+				<td> <?php echo $value->heure; ?> </td>
+				<td> <?php echo $value->type; ?> </td>
+			</tr>
+		<?php } ?>
+		</tbody>
 	</table>
 	</div>
 </div>
