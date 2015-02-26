@@ -1,14 +1,14 @@
 <div id="sub-menu">
 
-	<?php echo anchor('Consultation/consulter','Nouvelle Consultation'); ?> |
-	<?php echo anchor('Consultation/modifierDossier','Modifier Dossier'); ?> |
-	<?php echo anchor('Consultation/','Imprimer Ordonnance'); ?>
+	<?php echo anchor('Consultation/consulter/'.$header->numerodossier,'Nouvelle Consultation'); ?> |
+	<?php echo anchor('Consultation/modifierDossier/'.$header->numerodossier,'Modifier Dossier'); ?> |
+	<?php echo anchor('Ordonnance/editerOrdonnance/'.$header->numerodossier,'Editer ordonnance'); ?>
 
 </div>
 
 <div id="plainContent">
 	<div class="breadcrumb">
-	<p> <span class="design"> <?php echo TITLE_NEW_CONSULT.' - DOSSIER N° '.$header->numerodossier; ?></span> </p>
+	<span class="design"> <?php echo TITLE_NEW_CONSULT.' - DOSSIER N° '.$header->numerodossier; ?></span>
 	<hr/>
 	<br/>
 
@@ -24,7 +24,7 @@
 	</p>
 	<p> né(e) le <?php echo $header->datenaissance; ?> </p>
 	<br/>
-	<p> <h3> ANTECEDENTS MEDICAUX </h3> </p>
+	<h3 class="sub-title"> - ANTECEDENTS MEDICAUX - </h3>
 	<table> 
 		<thead>
 			<tr>

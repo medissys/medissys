@@ -4,6 +4,7 @@ class GestionPatient extends CI_Controller{
 
 	protected $count = 0;
 	protected $cnt = 0;
+	protected $index = 0;
 
 	public $resInsert;
 
@@ -30,8 +31,18 @@ class GestionPatient extends CI_Controller{
 
 		$this->load->library('javascript', array('js_library_driver' => 'jquery', 'autoload' => FALSE));
 
-	}
+		set_error_handler( function($errno, $errstr, $errfile, $errline) {
+      
+	      if (strpos($errstr, 'Undefined offset') !== false) {
 
+	        throw new ErrorException($errstr, 0);
+	      }
+
+	      return true;  // Récupération des exceptions de type -- undefined offset
+	    });
+
+		
+	}
 
 	public function sess_user(){
 
@@ -48,16 +59,44 @@ class GestionPatient extends CI_Controller{
 
 	}
 
+	public function liste(){
+
+		if ( isset($_GET['query']) ) {
+
+			$q = htmlentities($_GET['query']);
+
+			$res = $this->Gestionpatient_model->getDataForLoad($q);
+
+			foreach ($res as $key => $value) {
+
+	        	$d = $value->nom.' '.$value->prenom.' - '.$value->numerodossier;
+
+	        	$suggestions['suggestions'][] = $d;	
+       		 }
+
+       		 echo json_encode($suggestions);
+		}
+	}
+
 	public function rechercherDossier(){
 
-		$numdossier = $this->input->post('numerodossier');
+		//$numdossier = $this->input->post('numerodossier');
+
+		$nom = $this->input->post('nom');
+
+		$nom = explode(" - ",$nom); /* on split la chaîne de caractère */
 
 		$config = array(
-					array(
+					/*array(
 						'field' => 'numerodossier',
 						'label' => '',
 						'rules' => 'trim|callback_check_numdossier|xss_clean'
-					)
+					),*/
+					array(
+						'field' => 'nom',
+						'label' => '',
+						'rules' => 'trim|callback_check_numdossier|xss_clean'
+						)
 				  );
 
 		$this->form_validation->set_rules($config);
@@ -70,79 +109,113 @@ class GestionPatient extends CI_Controller{
 
 		}
 		else {
-			
-			$result = $this->Gestionpatient_model->findDossier($numdossier);
 
-			$resBoard = $this->Gestionpatient_model->getDataBoard($numdossier);
+			try{
 
-			if ( empty($result) ){
+				$numdossier = $nom[1];
+
+				//$result = $this->Gestionpatient_model->findDossier($numdossier);
+
+				$result = $this->Gestionpatient_model->findDossier($numdossier);		
+
+				if ( empty($result) ){
+
+					$err = array('erreur' => DIR_NOT_FOUND);
+
+					//$this->layout->view('patient/rechercher_dossier_error',$err);
+					$this->layout->view('patient/gestionpatient',$err);
+
+				}
+				else{
+
+					$i = 0;
+
+					$resBoard = $this->Gestionpatient_model->getDataBoard($numdossier);
+
+					foreach ($resBoard as $key) {
+						
+						$data[$i] = $resBoard[$i];
+						$i++; 
+					}
+
+					$array = array(
+						'header' => $result[0],
+						'board'  => $data
+						);
+
+					$this->layout->view('patient/consulter_dossier',$array);
+
+				}
+
+			}
+			catch (ErrorException $exception) {
 
 				$err = array('erreur' => DIR_NOT_FOUND);
 
-				$this->layout->view('patient/rechercher_dossier_error',$err);
-
-			}
-			else{
-
-				$i = 0;
-
-				foreach ($resBoard as $key) {
-					
-					$data[$i] = $resBoard[$i];
-					$i++; 
-				}
-
-				$array = array(
-					'header' => $result[0],
-					'board'  => $data
-					);
-
-				$this->layout->view('patient/consulter_dossier',$array);
-
-			}
+				$this->layout->view('patient/gestionpatient',$err);
+			}	
 		}
+	}
+
+	public function modifierDossierIndex($index){
+
+		$result = $this->Gestionpatient_model->findDossier($index);
+
+		$this->layout->view('patient/consulter_dossier_modifier',$result[0]);
 	}
 
 	public function modifierDossier(){
 
-		//$this->layout->view('patient/modifierdossier');
+		/*if ( $index == 0 ){
 
-		$num = $this->input->post('numerodossier');
+			$result = $this->Gestionpatient_model->findDossier($index);
 
-		$config = array(
-					array(
-						'field' => 'numerodossier',
-						'label' => '',
-						'rules' => 'trim|callback_check_numdossier|xss_clean'
-					)
-				  );
-
-		$this->form_validation->set_rules($config);
-
-		$this->form_validation->set_error_delimiters('<p class="error">','</p>');
-
-		if ( $this->form_validation->run() == false ){
-
-			$this->layout->view('patient/modifierdossier');
-
+			$this->layout->view('patient/consulter_dossier_modifier',$result[0]);
 		}
-		else {
 
-			$result = $this->Gestionpatient_model->findDossier($num);
+		else{*/
 
-			if ( empty($result) ){
+			//echo $this->layout->view('patient/consulter_dossier_modifier',$index);
 
-				$err = array('erreur' => DIR_NOT_FOUND);
+			//$this->layout->view('patient/modifierdossier');
 
-				$this->layout->view('patient/modifier_dossier_error',$err);
+			$num = $this->input->post('numerodossier');
+
+			$config = array(
+						array(
+							'field' => 'numerodossier',
+							'label' => '',
+							'rules' => 'trim|callback_check_numdossier|xss_clean'
+						)
+					  );
+
+			$this->form_validation->set_rules($config);
+
+			$this->form_validation->set_error_delimiters('<p class="error">','</p>');
+
+			if ( $this->form_validation->run() == false ){
+
+				$this->layout->view('patient/modifierdossier');
 
 			}
-			else{
+			else {
 
-				$this->layout->view('patient/consulter_dossier_modifier',$result[0]);
+				$result = $this->Gestionpatient_model->findDossier($num);
 
+				if ( empty($result) ){
+
+					$err = array('erreur' => DIR_NOT_FOUND);
+
+					$this->layout->view('patient/modifier_dossier_error',$err);
+
+				}
+				else{
+
+					$this->layout->view('patient/consulter_dossier_modifier',$result[0]);
+
+				}
 			}
-		}
+		//}
 	}
 
 	public function dossierModifier(){
@@ -185,8 +258,7 @@ class GestionPatient extends CI_Controller{
 
 			if ( $resUpdate ){
 				
-				/* A developper */
-				redirect('patient/modifier_dossier_success');
+				$this->layout->view('patient/modifier_dossier_success',$alterValue);
 
 			}
 		}
@@ -281,9 +353,9 @@ class GestionPatient extends CI_Controller{
 
 			if ( $resInsert ){
 				
-				//$this->creerdossier_success($resInsert);
+				//$this->creerdossier_success();
 				redirect('GestionPatient/creerdossier_success');
-
+				//$this->layout->view('GestionPatient/creerdossier_success');
 			}
 		}
 	}
@@ -300,6 +372,41 @@ class GestionPatient extends CI_Controller{
 		$res = $this->Gestionpatient_model->getLastInsertData();
 
 		$this->layout->view('patient/consulter_dossier',$res[0]);
+
+	}
+
+	public function consulterDossierModifier($index){
+
+		$result = $this->Gestionpatient_model->findDossier($index);
+
+		$resBoard = $this->Gestionpatient_model->getDataBoard($index);
+
+		$i = 0;
+
+		foreach ($resBoard as $key) {
+			
+			$data[$i] = $resBoard[$i];
+			$i++; 
+		}
+
+		$array = array(
+			'header' => $result[0],
+			'board'  => $data
+			);
+
+		$this->layout->view('patient/consulter_dossier',$array);
+
+		//$this->layout->view('patient/consulter_dossier',$res[0]);
+
+	}
+
+	public function consulterDossierCree(){
+
+		$res = $this->Gestionpatient_model->getLastInsertData();
+
+		$index = $res[0]->numerodossier;
+
+		$this->consulterDossierModifier($index);
 
 	}
 

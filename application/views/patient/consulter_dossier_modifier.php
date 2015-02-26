@@ -8,8 +8,10 @@
 
 <div id="plainContent">
 	<div class="breadcrumb">
-	<p> <span class="design"> <?php echo TITLE_MODIF_DIR; ?> </span> </p>
+	<span class="design"> <?php echo TITLE_MODIF_DIR; ?> </span>
 	<hr/>
+
+	<br />
 	</div>
 </div>
 

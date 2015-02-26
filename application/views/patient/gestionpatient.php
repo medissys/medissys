@@ -15,42 +15,24 @@
 
 <div class="consult">
 
-	<p> Rechercher par </p>
+	<br/>
+
+	<p> <strong> Rechercher un dossier :: </strong> </p>
 
 	<?php 
  		  
  		  echo form_open('Gestionpatient/rechercherDossier'); 
 
-		  $numerodossier = array('name'=>'numerodossier','value'=>'','placeholder'=>'numero de dossier ...'); 
+		  /*$numerodossier = array('name'=>'numerodossier','value'=>'','placeholder'=>'numero de dossier ...'); 
 
-		  echo form_input($numerodossier);
+		  echo form_input($numerodossier);*/
 
-	/*echo form_open('Gestionpatient/rechercherDossier'); 
+		  $nom = array('name'=>'nom','value'=>'','placeholder'=>'nom ...','id'=>'liste'); 
 
-		  $nom = array('name'=>'nom','value'=>'','placeholder'=>'nom ...'); 
-	?>
-
-	<p> 
-		<?php echo form_input($nom); ?> 
-    </p>
-
-    <?php $prenom = array('name'=>'prenom','value'=>'','placeholder'=>'prenom ...'); ?>
-
-	<p> 
-		<?php echo form_input($prenom); ?> 
-    </p>
-
-    <?php $dateN = array('name'=>'date','value'=>'','placeholder'=>'date de naissance ...'); ?>
-
-	<p> 
-		<?php echo form_input($dateN); */ ?> 
-    </p>
-
-    <!-- <p> - OU -  </p>
-
-    <php $num_dossier = array('name'=>'numdossier','value'=>'','placeholder'=>'numero de dossier ...'); ?>
-
-    <p> <php echo form_input($num_dossier); ?> </p> -->
+		  echo form_input($nom);
+	?> 
+    
+    <p/>
 
     <p> <?php echo form_submit('commit','OK'); ?> </p> 
 
@@ -58,12 +40,12 @@
 
 </div>
 
-<p class="error"> <?php //echo $err; ?> </p>
+<p class="error"> <?php if (!isset($erreur)) $erreur =''; else echo $erreur; ?> </p>
 <p class="error"> <?php echo validation_errors(); ?> </p>
 
 
-<?php //echo css_url('designComponent');
-	  echo css_url('designComponent'); ?> 
-
-
-
+<?php echo css_url('designComponent'); 
+	  echo js_url('jquery-2.min');
+	  echo js_url('jquery.autocomplete.min');
+	  echo js_url('listeNoms');
+?> 

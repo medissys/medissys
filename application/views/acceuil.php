@@ -7,7 +7,7 @@
 </div>
 
 <div class="dashboard">
-	<p class="board"> DASHBOARD </p>
+	<p class="board"> DASHBOARD - MES RDV</p>
 	<table> 
 		<thead>
 			<tr>
@@ -25,8 +25,8 @@
 		?>
 			<tr>
 				<td> <strong> <?php echo $value->num_dossier; ?> </strong> </td>
-				<td> <?php echo $value->nom; ?> </td>
-				<td> <?php echo $value->prenom;?> </td>
+				<td> <?php echo mb_strtoupper($value->nom); ?> </td>
+				<td> <?php echo ucwords($value->prenom);?> </td>
 				<td> <?php echo $value->date; ?> </td>
 				<td> <?php echo $value->heure; ?> </td>
 				<td> <?php echo $value->type; ?> </td>

@@ -49,8 +49,8 @@ define('FOPEN_READ_WRITE_CREATE_STRICT',		'x+b');
 
 define('AUTHENTIFICATION_ERROR','Login et/ou mot de passe incorrect');
 define('INITIALIZE_NUMERO_DOSSIER',1000);
-define('LENGTH_MIN',8);
-define('LENGTH_MAX',8);
+define('LENGTH_MIN',9);
+define('LENGTH_MAX',9);
 define('DIR_NOT_FOUND','Le dossier n\'existe pas');
 define('TITLE_MODIF_DIR','MODIFIER DOSSIER PATIENT');
 define('TITLE_CONSULT_DIR','CONSULTER DOSSIER PATIENT');
@@ -59,6 +59,6 @@ define('TITLE_FIND_USER','RECHERCHER UN CONTACT');
 define('TITLE_LIST_CONTACT','ANNUAIRE DES CONTACTS');
 define('TITLE_FIND_DIR_CONSULT', 'OUVRIR DOSSIER');
 define('TITLE_NEW_CONSULT','NOUVELLE CONSULTATION');
-
+define('TITLE_EDIT_PRESCRIPTION','EDITER ORDONNANCE');
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

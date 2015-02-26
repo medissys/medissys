@@ -46,7 +46,7 @@
 
 <?php // Chargement des fichiers JS
 
-	 echo js_url('jquery-2.min'); 
-	 echo js_url('jquery.autocomplete.min');
-	 echo js_url('load.autocomplete');
+	 //echo js_url('jquery-2.min'); 
+	 //echo js_url('jquery.autocomplete.min');
+	 //echo js_url('load.autocomplete');
   ?>

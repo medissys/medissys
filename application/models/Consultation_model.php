@@ -37,8 +37,8 @@ class Consultation_model extends CI_Model{
 		$seconds = $date['seconds'];
 
 		$var = array('numerodossier'  => $array['id'],
-					 'symptome' => $array['symp'],
-					 'observation' => $array['obs'],
+					 'symptomes' => $array['symp'],
+					 'observations' => $array['obs'],
 					 'commentaires' => $array['com'],
 					 'dateconsultation'  => $year.'/'.$month.'/'.$day.' '.$hour.':'.$minute.':'.$seconds
 				);
@@ -52,6 +52,7 @@ class Consultation_model extends CI_Model{
 		return $this->db->select('dateconsultation,symptomes,observations,commentaires')
 						->from($this->tableC)
 						->where('numerodossier',$id)
+						//->where('dateconsultation !=', NULL)
 						->get()
 						->result();
 	}

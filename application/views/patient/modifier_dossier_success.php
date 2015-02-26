@@ -8,18 +8,20 @@
 
 <div id="plainContent">
 	<div class="breadcrumb">
-	<span class="design"> DOSSIER PATIENT </span>
+	<p> <span class="design"> DOSSIER PATIENT </span> </p>
 	<hr/>
 	</div>
 </div>
 
 <div class="consult">
+
 <br />
-<p class="success"> <?php echo img('success_icon','png','success icon'); ?> <span> DOSSIER CREER AVEC SUCCESS <span></p>
+
+<p class="success"> <?php echo img('success_icon','png','success icon'); ?> <span>DOSSIER N° <?php echo $numdossier; ?> MODIFIE AVEC SUCCESS <span></p>
 
 <p> </p>
 
-<p> <?php echo anchor('Gestionpatient/consulterDossierCree','> consulter le dossier'); ?> </p>
+<p> <?php echo anchor('Gestionpatient/consulterDossierModifier/'.$numdossier,'consulter le dossier'); ?> </p>
 
 </div>
 

@@ -46,6 +46,8 @@ class Gestionpatient_model extends CI_Model{
 		$minute = $date['minutes'];
 		$seconds = $date['seconds'];
 
+		$datecreation = $year.'/'.$month.'/'.$day.' '.$hour.':'.$minute.':'.$seconds;
+
 		$data = array(
 					'idCivilite'    => $array['civilite'],
 					'numerodossier' => $numerodossier,					
@@ -55,15 +57,31 @@ class Gestionpatient_model extends CI_Model{
 					'email'	        => $array['mail'],
 					'adresse'       => $array['adresse'],
 					'profession'    => $array['profession'],
-					'symptome'      => $array['symptome'],
-					'observation'   => $array['observation'],				
+					//'symptome'      => $array['symptome'],
+					//'observation'   => $array['observation'],				
 					'datenaissance' => $array['date_naissance'],
-					'datecreation'  => $year.'/'.$month.'/'.$day.' '.$hour.':'.$minute.':'.$seconds
+					//'datecreation'  => $year.'/'.$month.'/'.$day.' '.$hour.':'.$minute.':'.$seconds
+					'datecreation'  => $datecreation
 				);
 
-		return $this->db->insert($this->tableP,$data);
+		$rInsert = $this->db->insert($this->tableP,$data);
+
+		if ( $rInsert ){
+
+			$rUpdate = $this->updateConsultation($numerodossier,$datecreation,$array['symptome'],$array['observation']);
+		}
+
+		return $rUpdate;
+		//return $this->db->insert($this->tableP,$data);
 	}
 
+	public function updateConsultation($num,$datec,$symp,$obs){
+
+		$data = array('numerodossier' => $num,'dateconsultation' => $datec, 'symptomes' => $symp, 'observations' => $obs);
+
+		return $this->db->insert($this->tableC,$data);
+
+	}
 
 	/*public function genererNumeroDossier($nom,$prenom){
 
@@ -156,6 +174,16 @@ class Gestionpatient_model extends CI_Model{
 						->result();
 	}
 
+	/*public function findDossier($nom){
+
+		return $this->db->select('*')
+						->from($this->tableP)
+						->where('nom',$nom)
+						->where('nom !=','')
+						->get()
+						->result();
+	}*/
+
 	/*public function getDataBoard($numDossier){
 
 		return $this->db->select('*')
@@ -176,16 +204,36 @@ class Gestionpatient_model extends CI_Model{
 
 	public function updateDossier($array = array()){
 
+		$date = getdate();
+		$day = $date['mday'];
+		$month = $date['mon'];
+		$year = $date['year'];
+		$hour = $date['hours'];
+		$minute = $date['minutes'];
+		$seconds = $date['seconds'];
+
 		$var = array('numerodossier' => $array['numdossier'],
 					 'telephone' => $array['telephone'],
 					 'email' => $array['mail'],
 					 'adresse' => $array['adresse'],
-					 'profession' => $array['profession']);
+					 'profession' => $array['profession'],
+					 'datemodification' => $year.'-'.$month.'-'.$day.' '.$hour.':'.$minute.':'.$seconds
+					 );
 
 		$this->db->where('numerodossier',$var['numerodossier'])
 				  ->where('nom !=','');
 
 		return $this->db->update($this->tableP,$var);
 			
+	}
+
+	public function getDataForLoad($string){
+
+		return $this->db->select('nom,prenom,numerodossier')
+        		 ->from($this->tableP)
+        		 ->like('nom',$string)
+        		 ->get()
+        		 ->result();
+
 	}
 }

@@ -8,8 +8,9 @@
 
 <div id="plainContent">
 	<div class="breadcrumb">
-	<p> <span class="design"> CREER DOSSIER PATIENT </span> </p>
+	<span class="design"> CREER DOSSIER PATIENT </span>
 	<hr/>
+  <br />
 	</div>
 </div>
 
@@ -35,11 +36,11 @@
 		echo form_dropdown('civilite',$options); 
       //TODO: Remplacer civilité par Sexe.
     ?> 
-    </p>
+  </p>
     <?php 
     	    $nom = array('name'=>'nom','value'=>set_value('nom'), 'placeholder'=>'* nom ...'); 
           $prenom = array('name'=>'prenom','value'=> set_value('prenom'),'placeholder'=>'* prenom ...');
-          $telephone = array('name'=>'telephone','value'=>set_value('telephone'), 'maxlength' => '8', 'placeholder'=>'* telephone ...');
+          $telephone = array('name'=>'telephone','value'=>set_value('telephone'), 'maxlength' => '9', 'placeholder'=>'* telephone ...');
           $mail = array('name'=>'email','value'=> set_value('email'),'placeholder'=>'email ...');
           $profession = array('name'=>'profession','value'=> set_value('profession'),'placeholder'=>'profession ...');
           $adresse = array('name'=>'adresse','value'=> set_value('adresse'),'placeholder'=>'adresse (quartier) ...');

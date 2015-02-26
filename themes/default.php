@@ -8,7 +8,7 @@
 	</head>
 	<body>
 		<div class="firstBar">
-			<p> Bonjour Dr <?php echo strtoupper($id); ?>
+			<p> Bonjour Docteur. <?php //echo strtoupper($id); ?>
 
 				<span class="deconnexion"> 
 					<?php echo anchor('Logout/deconnect','Deconnexion'); ?>

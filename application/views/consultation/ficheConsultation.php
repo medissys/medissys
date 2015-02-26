@@ -1,13 +1,15 @@
 <div id="sub-menu">
 
-	<?php echo anchor('Consultation/consulter','Nouvelle Consultation'); ?> |
-	<?php echo anchor('GestionPatient/modifierDossier','Modifier Dossier'); ?> 
+	<?php echo anchor('Consultation/consulter/'.$index,'Nouvelle Consultation'); ?> |
+	<?php echo anchor('Consultation/modifierDossier/'.$index,'Modifier Dossier'); ?> 
 
 </div>
 
 <div id="plainContent">
 	<div class="breadcrumb">
-	<p> <span class="design"> <?php echo TITLE_NEW_CONSULT.' - '.'DOSSIER N° '.$this->session->userdata('numerodossier'); ?></span> </p>
+	<!--p> <span class="design"> <?php //echo TITLE_NEW_CONSULT.' - '.'DOSSIER N° '.$this->session->userdata('numerodossier'); ?></span> </p-->
+
+	<span class="design"> <?php echo TITLE_NEW_CONSULT.' - '.'DOSSIER N° '.$index; ?></span>
 	<hr/>
 	<br/>
 
@@ -18,7 +20,7 @@
 
 	<?php 
 	 		  
-	    echo form_open('Consultation/enregistrerConsultation'); 
+	    echo form_open('Consultation/enregistrerConsultation/'.$index); 
 
 	    $symptome = array('name'=>'symptome','value'=>'','placeholder'=>'', 'style' => 'resize:none'); 
 	    $observation = array('name' => 'observation', 'value' => '', 'placeholder' => '', 'style' => 'resize:none');

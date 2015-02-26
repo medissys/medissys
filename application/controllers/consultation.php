@@ -92,9 +92,34 @@ class Consultation extends CI_Controller{
 		}
 	}
 
-	public function modifierDossier(){
+	public function consulterDossier($index){
 
-		$result = $this->Gestionpatient_model->findDossier($this->session->userdata('numerodossier'));
+		$res = $this->Gestionpatient_model->findDossier($index);
+
+		$resBoard = $this->Gestionpatient_model->getDataBoard($index);
+
+		$i = 0;
+
+		foreach ($resBoard as $key) {
+			
+			$data[$i] = $resBoard[$i];
+			$i++; 
+		}
+
+		$array = array(
+			'header' => $res[0],
+			'board'  => $data
+			);
+
+		$this->layout->view('consultation/nouvelleConsultation',$array);
+
+	}
+
+	public function modifierDossier($index){
+
+		//$result = $this->Gestionpatient_model->findDossier($this->session->userdata('numerodossier'));
+
+		$result = $this->Gestionpatient_model->findDossier($index);
 
 		if ( empty($result) ){
 
@@ -111,7 +136,7 @@ class Consultation extends CI_Controller{
 		}
 	}
 
-	public function enregistrerConsultation(){
+	/*public function enregistrerConsultation(){
 
 		$data = array( 
 			'id'   => $this->session->userdata('numerodossier'),
@@ -176,13 +201,73 @@ class Consultation extends CI_Controller{
 				echo 'Erreur a l\'enregistrement';
 			}
 		}
+	}*/
+
+	public function enregistrerConsultation($index){
+
+		$data = array( 
+			'id'   => $index,
+			'symp' => $this->input->post('symptome'),
+			'obs'  => $this->input->post('observation'),
+			'com'  => $this->input->post('commentaire')
+			);
+
+		$config = array(
+					array(
+						'field' => 'symptome',
+						'label' => '',
+						'rules' => 'trim|callback_check_field|xss_clean'
+					),
+					array(
+						'field' => 'observation',
+						'label' => '',
+						'rules' => 'trim|callback_check_field|xss_clean'
+					),
+					array(
+						'field' => 'commentaire',
+						'label' => '',
+						'rules' => 'trim|callback_check_field|xss_clean'
+					)
+				  );
+
+		$this->form_validation->set_rules($config);
+
+		$this->form_validation->set_error_delimiters('<p class="error">','</p>');
+
+		if ( $this->form_validation->run() == false ){
+
+			$data = array('index' => $index);
+
+			$this->layout->view('consultation/ficheConsultation',$data);
+		}
+		else{
+
+			$resInsert = $this->Consultation_model->updateDossier($data);
+
+			if ( empty($resInsert) ){
+
+				$resSelect = $this->Consultation_model->selectAllLines($index);
+
+				$i = 0;
+
+				foreach ($resSelect as $key) {
+					
+					$data['row'][$i] = $resSelect[$i];
+					$i++; 
+				}
+
+				//print_r($data);
+
+				$this->layout->view('consultation/consultation_success',$data);
+			}
+		}
 	}
 
-	public function consulter(){
+	public function consulter($index){
 
-		//echo $this->session->userdata('numerodossier');
+		$data = array( 'index' => $index );
 
-		$this->layout->view('consultation/ficheConsultation');
+		$this->layout->view('consultation/ficheConsultation',$data);
 	}
 
 	public function check_numdossier($str){

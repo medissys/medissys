@@ -41,16 +41,26 @@ class Dashboard extends CI_Controller{
 
 		$res = $this->RendezVous_model->getallRDV();
 
-		$i = 0;
+		if ( !empty($res) ){
 
-		foreach ($res as $key => $value) {
-			
-			$data['row'][$i] = $value;
-			$i++;
+			$i = 0;
+
+			foreach ($res as $key => $value) {
+				
+				$data['row'][$i] = $value;
+				$i++;
+			}
+
+			$this->layout->view('acceuil',$data);
+
 		}
+		else{
 
-		$this->layout->view('acceuil',$data);
+			$data['row'] = array();
 
+			$this->layout->view('acceuil',$data);
+
+		}
 	}
 }
 ?>

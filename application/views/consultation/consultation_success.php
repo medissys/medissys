@@ -1,8 +1,7 @@
 <div id="sub-menu">
 
-	<?php echo anchor('Consultation/consulter','Nouvelle Consultation'); ?> |
+	<?php echo anchor('Consultation/consulter/'.$id,'Nouvelle Consultation'); ?> |
 	<?php echo anchor('GestionPatient/modifierDossier','Modifier Dossier'); ?> 
-
 </div>
 
 <div id="plainContent">
@@ -40,9 +39,9 @@
 		<?php foreach ($row as $key => $value) {?>
 			<tr>
 				<td><?php echo ++$i; ?></td>
-				<td><?php echo $value->datecreation; ?> </td>
-				<td><?php echo $value->symptome; ?> </td>
-				<td><?php echo $value->observation; ?> </td>
+				<td><?php echo $value->dateconsultation; ?> </td>
+				<td><?php echo $value->symptomes; ?> </td>
+				<td><?php echo $value->observations; ?> </td>
 				<td><?php echo $value->commentaires; ?> </td>
 			</tr>
 		<?php } ?>

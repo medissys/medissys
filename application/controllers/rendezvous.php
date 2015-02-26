@@ -40,32 +40,49 @@ class RendezVous extends CI_Controller{
 
 		$res = $this->RendezVous_model->getallRDV();
 
-		$i = 0;
+		if ( !empty($res) ){
+			$i = 0;
 
-		foreach ($res as $key => $value) {
-			
-			$data['row'][$i] = $value;
-			$i++;
+			foreach ($res as $key => $value) {
+				
+				$data['row'][$i] = $value;
+				$i++;
+			}
+
+			$this->layout->view('rdv/planning',$data);
 		}
+		else{
 
-		$this->layout->view('rdv/planning',$data);
+			$data['row'] = array();
+
+			$this->layout->view('rdv/planning',$data);
+
+		}
 	}
 
 	public function nouveauRDV(){
 
 		$result = $this->RendezVous_model->getAllDossier();
 
-		$i = 0;
+		if ( !empty($result) ){
 
-		foreach ($result as $value) {
-			
-			$data['row'][$i] = $value;
+			$i = 0;
 
-			$i++;
+			foreach ($result as $value) {
+				
+				$data['row'][$i] = $value;
+
+				$i++;
+			}
+
+			$this->layout->view('rdv/plannifier',$data);
 		}
+		else{
 
-		$this->layout->view('rdv/plannifier',$data);
+			$data['row'] = array();
 
+			$this->layout->view('rdv/plannifier',$data);
+		}	
 	}
 
 

@@ -28,8 +28,8 @@
 		<?php foreach ($row as $key => $value) { ?>
 			<tr>
 				<td> <?php echo anchor('RendezVous/ouvrirDossier/'.$value->numerodossier,$value->numerodossier,'class="linkTable"'); ?> </td>
-				<td> <?php echo $value->nom; ?> </td>
-				<td> <?php echo $value->prenom; ?> </td>
+				<td> <?php echo mb_strtoupper($value->nom); ?> </td>
+				<td> <?php echo ucwords($value->prenom); ?> </td>
 			</tr>
 		<?php } ?>
 		</tbody>
