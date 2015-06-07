@@ -45,8 +45,8 @@
           $mail = array('name'=>'email','value'=> set_value('email'),'placeholder'=>'email ...');
           $profession = array('name'=>'profession','value'=> set_value('profession'),'placeholder'=>'profession ...');
           $adresse = array('name'=>'adresse','value'=> set_value('adresse'),'placeholder'=>'adresse (quartier) ...');
-          $symp = array('name' => 'symptome', 'value' => set_value('symptome'), 'placeholder' => '* symptômes ... ');
-          $diag = array('name' => 'diagnostic', 'value' => '', 'placeholder' => 'observations ... ');
+          $symp = array('name' => 'symptome', 'value' => set_value('symptome'), 'placeholder' => '* symptômes ... ', 'style' => 'resize:none');
+          $diag = array('name' => 'diagnostic', 'value' => '', 'placeholder' => 'observations ... ', 'style' => 'resize:none');
     ?>
 
 	<p class="pForm"> 
