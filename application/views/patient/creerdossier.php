@@ -1,14 +1,15 @@
 <div id="sub-menu">
 
-	<?php echo anchor('Gestionpatient/acceuil','Rechercher'); ?> |
-	<?php echo anchor('Gestionpatient/creerDossier','Creer un dossier'); ?> |
-	<?php echo anchor('Gestionpatient/modifierDossier','Modifier un dossier'); ?>
+  <?php echo anchor('Gestionpatient/acceuil',HEADER_ANNUAIRE_FIND); ?> |
+  <?php echo anchor('Gestionpatient/creerDossier',HEADER_CREER_DOSSIER); ?> |
+  <?php echo anchor('Gestionpatient/modifierDossier',HEADER_MODIF_DOSSIER); ?> |
+  <?php echo anchor('Gestionpatient/listeDossier',HEADER_LIST_DOSSIER); ?>
 
 </div>
 
 <div id="plainContent">
 	<div class="breadcrumb">
-	<span class="design"> CREER DOSSIER PATIENT </span>
+	<p class="pForm"> <span class="design"> CREER DOSSIER PATIENT </span> </p>
 	<hr/>
   <br />
 	</div>
@@ -16,7 +17,7 @@
 
 <div class="consult">
 
-<p> Nouveau dossier ::: Creer </p>
+<p class="pForm"> <strong> Nouveau dossier ::: Creer </strong> </p>
   
 	<?php echo form_open('Gestionpatient/creerDossier'); 
 		
@@ -29,7 +30,7 @@
 		 }
 	?>
 
-	<p> 
+	<p class="pForm"> 
 
 		<?php 
     echo form_label('civilite: ');
@@ -48,12 +49,12 @@
           $diag = array('name' => 'diagnostic', 'value' => '', 'placeholder' => 'observations ... ');
     ?>
 
-	<p> 
+	<p class="pForm"> 
 		<?php  echo form_input($nom); 
 			     echo form_input($prenom); ?> 
     </p>
 
-    <p> <?php echo form_label('Date de naissance : '); 
+    <p class="pForm"> <?php echo form_label('Date de naissance : '); 
 
     		  foreach ( $d['array_jours'] as $index => $value ) { /* On boucle sur $d['array_jours'] pour ne sélectionner que les jours */
 
@@ -77,26 +78,26 @@
     		  echo form_dropdown('annees',$year); ?> 
     </p>
 
-     <p> <?php echo form_input($telephone); ?> 
+     <p class="pForm"> <?php echo form_input($telephone); ?> 
     </p>
 
-     <p> <?php echo form_input($mail); /*echo form_error('email');*/ ?> </p>
-     <p> <?php echo form_input($adresse); ?> </p>
-     <p> <?php echo form_input($profession); ?> </p>
-     <p> <?php echo form_textarea($symp);
+     <p class="pForm"> <?php echo form_input($mail); /*echo form_error('email');*/ ?> </p>
+     <p class="pForm"> <?php echo form_input($adresse); ?> </p>
+     <p class="pForm"> <?php echo form_input($profession); ?> </p>
+     <p class="pForm"> <?php echo form_textarea($symp);
                echo form_textarea($diag);
           ?>
      </p>
 
-    <p> <?php echo form_submit('commit','OK'); ?> </p> 
+    <p class="pForm"> <?php echo form_submit('commit','OK'); ?> </p> 
 
     <?php echo form_close(); /* Fin du formulaire */ ?>
 
-   <p class="error"> <?php echo $this->session->flashdata('error_fields'); ?> </p>
+   <p class="error pForm"> <?php echo $this->session->flashdata('error_fields'); ?> </p>
 
 </div>
 
-<p class="error"> <?php echo $this->session->flashdata('recherche_dossier_ko'); ?> </p>
+<p class="error pForm"> <?php echo $this->session->flashdata('recherche_dossier_ko'); ?> </p>
 
 
 <?php 

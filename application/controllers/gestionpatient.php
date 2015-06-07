@@ -218,6 +218,27 @@ class GestionPatient extends CI_Controller{
 		//}
 	}
 
+	public function listeDossier(){
+
+
+		$res = $this->Gestionpatient_model->getDossier();
+		$i = 0;
+
+		foreach ($res as $value) {
+
+			$data['row'][$i] = $value;
+
+			$i++;
+		}
+
+		$this->layout->view('patient/listedossier',$data);
+		
+	}
+
+	public function historique(){
+		echo 'historique consulation';
+	}
+
 	public function dossierModifier(){
 
 		//echo $this->jquery->event('#submit',alert());

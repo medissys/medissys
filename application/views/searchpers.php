@@ -1,11 +1,13 @@
 <div id="sub-menu">
-	<?php echo anchor('Gestionpers/acceuil','Rechercher'); ?> |
-	<?php echo anchor('Gestionpers/annuaire','Afficher l\'annuaire complète'); ?>
+
+	<?php echo anchor('Gestionpers/acceuil',HEADER_ANNUAIRE_FIND); ?> |
+	<?php echo anchor('Gestionpers/annuaire',HEADER_ANNUAIRE_LIST); ?>
+	
 </div>
 
 <div id="plainContent">
 	<div class="breadcrumb">
-	<p> <span class="design"> <?php echo TITLE_USER_FOUND; ?> </span> </p>
+	<p class="pForm"> <span class="design"> <?php echo TITLE_USER_FOUND; ?> </span> </p>
 	<hr/>
 	</div>
 </div>
@@ -33,7 +35,7 @@
 	</table>
 </div>
 
-<?php echo css_url('login'); 
+<?php echo css_url('designComponent'); 
 	  echo css_url('table'); ?> 
 
 <?php // Chargement des fichiers JS

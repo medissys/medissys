@@ -41,7 +41,15 @@
 				<?php echo $output; ?>
 			</div>
 		</div>
+
 	</body>
-	<!--div class="footer"><span> copyright © medissys team. <?php //echo anchor('','contactez-nous'); ?> </span> </div-->
+
+	<!--div class="footer">
+
+		<p>© MEDISSYS TEAM. <?php //echo anchor('','contactez-nous'); ?> </p> 
+		
+	</div-->
+
 	<?php foreach($js as $script) { echo $script; } ?>
+	
 </html>

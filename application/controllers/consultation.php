@@ -284,7 +284,9 @@ class Consultation extends CI_Controller{
 
 		if ( empty($str) && $this->count == 0){
 
-			$this->form_validation->set_message('check_field','Veuillez renseigner les champs pour effectuer la recherche.');
+			//$this->form_validation->set_message('check_field','Veuillez renseigner les champs pour effectuer la recherche.');
+
+			$this->form_validation->set_message('check_field','Veuillez renseigner les champs.');
 
 			$this->count++;
 

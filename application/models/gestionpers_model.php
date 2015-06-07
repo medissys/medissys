@@ -3,11 +3,12 @@
 class Gestionpers_model extends CI_Model{
 
 	protected $table = 'employe';
+	protected $tableU = 'utilisateur';
 
 	public function getPersByLogin($login){
 		
 		return $this->db->select('*')
-						->from($this->table)
+						->from($this->tableU)
 						->where('login',$login)
 						->get()
 						->result();
@@ -17,7 +18,7 @@ class Gestionpers_model extends CI_Model{
 	public function getAllPers(){
 
 		return $this->db->order_by('nom','ASC')
-						->get($this->table)
+						->get($this->tableU)
 						->result();
 
 	}

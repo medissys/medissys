@@ -60,5 +60,18 @@ define('TITLE_LIST_CONTACT','ANNUAIRE DES CONTACTS');
 define('TITLE_FIND_DIR_CONSULT', 'OUVRIR DOSSIER');
 define('TITLE_NEW_CONSULT','NOUVELLE CONSULTATION');
 define('TITLE_EDIT_PRESCRIPTION','EDITER ORDONNANCE');
+
+/* HEADER CONSTANTS */
+define('HEADER_ANNUAIRE_FIND','Rechercher');
+define('HEADER_ANNUAIRE_LIST','Liste contacts');
+define('HEADER_CREER_DOSSIER','Creer un dossier');
+define('HEADER_MODIF_DOSSIER','Modifier un dossier');
+define('HEADER_LIST_DOSSIER','Liste dossiers');
+
+
+
+
+
+
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

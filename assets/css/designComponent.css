@@ -109,6 +109,10 @@ p.label{
   margin:0;
 }
 
+p.pForm {
+  margin-left: 0;
+}
+
 #textarea{
 
   width: 50%; 
@@ -119,6 +123,9 @@ p.label{
   color: blue;
 }
 
+.hide-content{
+  margin-top: 100px;
+}
 .autocomplete-suggestions { border: 1px solid #999; background: #FFF; overflow: auto; }
 .autocomplete-suggestion { padding: 2px 5px; white-space: nowrap; overflow: hidden; }
 .autocomplete-selected { background: #F0F0F0; }

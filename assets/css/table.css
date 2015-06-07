@@ -1,5 +1,5 @@
 table { 
-		width: 800px; 
+		min-width: 800px; 
 		border-collapse: collapse; 
 	}
 	/* Zebra striping */

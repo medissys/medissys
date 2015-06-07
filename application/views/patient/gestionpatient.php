@@ -1,14 +1,15 @@
 <div id="sub-menu">
 
-	<?php echo anchor('Gestionpatient/acceuil','Rechercher'); ?> |
-	<?php echo anchor('Gestionpatient/creerDossier','Creer un dossier'); ?> |
-	<?php echo anchor('Gestionpatient/modifierDossier','Modifier un dossier'); ?>
+	<?php echo anchor('Gestionpatient/acceuil',HEADER_ANNUAIRE_FIND); ?> |
+	<?php echo anchor('Gestionpatient/creerDossier',HEADER_CREER_DOSSIER); ?> |
+	<?php echo anchor('Gestionpatient/modifierDossier',HEADER_MODIF_DOSSIER); ?> |
+	<?php echo anchor('Gestionpatient/listeDossier',HEADER_LIST_DOSSIER); ?>
 
 </div>
 
 <div id="plainContent">
 	<div class="breadcrumb">
-	<p> <span class="design"> DOSSIER PATIENT </span> </p>
+	<p class="pForm"> <span class="design"> DOSSIER PATIENT </span> </p>
 	<hr/>
 	</div>
 </div>
@@ -17,8 +18,9 @@
 
 	<br/>
 
-	<p> <strong> Rechercher un dossier :: </strong> </p>
+	<p class="pForm"> <strong> Rechercher un dossier :: </strong> </p>
 
+	<p class="pForm">
 	<?php 
  		  
  		  echo form_open('Gestionpatient/rechercherDossier'); 
@@ -31,10 +33,8 @@
 
 		  echo form_input($nom);
 	?> 
-    
-    <p/>
 
-    <p> <?php echo form_submit('commit','OK'); ?> </p> 
+     <?php echo form_submit('commit','OK'); ?> </p> 
 
     <?php echo form_close(); /* Fin du formulaire */ ?>
 

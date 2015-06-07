@@ -28,7 +28,7 @@
 
 		?>
 			<tr>
-				<td> <strong> <?php echo $value->num_dossier; ?> </strong> </td>
+				<td> <strong> <?php echo anchor('Consultation/consulter/'.$value->num_dossier,$value->num_dossier,'class="linkTable"'); ?> </strong> </td>
 				<td> <?php echo mb_strtoupper($value->nom); ?> </td>
 				<td> <?php echo ucwords($value->prenom);?> </td>
 				<td> <?php echo $value->date; ?> </td>

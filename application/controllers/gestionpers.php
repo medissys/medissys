@@ -45,8 +45,10 @@ class GestionPers extends CI_Controller{
 
 		if ( empty($res) ){
 
-			$this->acceuil();
-			$this->session->set_flashdata('recherche_user_ko','ERREUR: Ce login ou ce matricule n\'existe pas');
+			//$this->acceuil();
+			$err = array('erreur' => 'ERREUR: Ce login ou ce matricule n\'existe pas');
+			$this->layout->view('gestionpers',$err);
+			//$this->session->set_flashdata('recherche_user_ko','ERREUR: Ce login ou ce matricule n\'existe pas');
 
 		}
 		else{
@@ -65,7 +67,16 @@ class GestionPers extends CI_Controller{
 
 	public function consulterFiches(){
 
-		$this->layout->views('listepers');
+		$data['row'][0] = array ('nom'    => '',
+								 'prenom'    => '',
+								 'login'     => '',
+								 'telephone' => '',
+								 'email'      => '',
+								 'adresse'   => ''
+								);
+
+		$this->layout->view('listepers',$data);
+
 
 	}
 
@@ -79,8 +90,9 @@ class GestionPers extends CI_Controller{
 
 		if ( empty($res) ){
 
+
 			$this->consulterFiches();
-			$this->session->set_flashdata('recherche_users_ko','ERREUR: Aucun contact trouvé');
+			//$this->session->set_flashdata('recherche_users_ko','Aucun contact trouvé');
 
 		}
 		else{	
@@ -88,6 +100,7 @@ class GestionPers extends CI_Controller{
 			for ($i=0; $i<$row; $i++){
 
 				$data['row'][$i] = array ( 'nom'    => $res[$i]->nom,
+					                    'login'		=> $res[$i]->login,
 										'prenom'    => $res[$i]->prenom,
 										'telephone' => $res[$i]->telephone,
 										'email'      => $res[$i]->email,

@@ -236,4 +236,12 @@ class Gestionpatient_model extends CI_Model{
         		 ->result();
 
 	}
+
+	public function getDossier(){
+		
+		return $this->db->select('numerodossier,nom,prenom,telephone,email,profession,adresse,datenaissance,datecreation')
+				 ->from($this->tableP)
+				 ->get()
+				 ->result();
+	}
 }

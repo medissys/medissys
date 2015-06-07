@@ -1,13 +1,13 @@
 <div id="sub-menu">
 
-	<?php echo anchor('Gestionpers/acceuil','Rechercher'); ?> |
-	<?php echo anchor('Gestionpers/annuaire','Afficher l\'annuaire complète'); ?>
+	<?php echo anchor('Gestionpers/acceuil',HEADER_ANNUAIRE_FIND); ?> |
+	<?php echo anchor('Gestionpers/annuaire',HEADER_ANNUAIRE_LIST); ?>
 	
 </div>
 
 <div id="plainContent">
 	<div class="breadcrumb">
-	<p> <span class="design"> <?php echo TITLE_LIST_CONTACT; ?></span> </p>
+	<p class="pForm"> <span class="design"> <?php echo TITLE_LIST_CONTACT; ?></span> </p>
 	<hr/>
 	</div>
 </div>
@@ -18,6 +18,7 @@
 			<tr>
 				<th>NOM</th>
 				<th>PRENOM</th>
+				<th>LOGIN</th>
 				<th>TELEPHONE</th>
 				<th> ADRESSE MAIL</th>
 				<th>ADRESSE</th>
@@ -29,6 +30,7 @@
 			<tr>
 				<td><?php echo mb_strtoupper($value['nom']); ?> </td>
 				<td><?php echo ucwords($value['prenom']); ?> </td>
+				<td><?php echo $value['login']; ?> </td>
 				<td><?php echo $value['telephone']; ?> </td>
 				<td><?php echo $value['email']; ?> </td>
 				<td><?php echo $value['adresse']; ?> </td>
