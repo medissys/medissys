@@ -28,12 +28,12 @@
 
 			<?php 	foreach ($row as $line => $value) { ?>
 			<tr>
-				<td><?php echo mb_strtoupper($value['nom']); ?> </td>
-				<td><?php echo ucwords($value['prenom']); ?> </td>
+				<td><strong><?php echo mb_strtoupper($value['nom']); ?></strong> </td>
+				<td><strong><?php echo ucwords($value['prenom']); ?> </strong></td>
 				<td><?php echo $value['login']; ?> </td>
 				<td><?php echo $value['telephone']; ?> </td>
 				<td><?php echo $value['email']; ?> </td>
-				<td><?php echo $value['adresse']; ?> </td>
+				<td><?php echo mb_strtoupper($value['adresse']); ?> </td>
 			</tr>
 			<?php } ?>
 		</tbody>

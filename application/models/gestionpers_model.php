@@ -25,6 +25,6 @@ class Gestionpers_model extends CI_Model{
 
 	public function getNumRows(){
 
-		return $this->db->count_all($this->table);
+		return $this->db->count_all($this->tableU);
 	}
 }
