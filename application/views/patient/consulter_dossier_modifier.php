@@ -80,12 +80,12 @@
 	<br/>
 	<?php
 		//symptomes
-		$symp = array('name'=>'symptome','value'=> $symptome, 'disabled'=>'disabled', 'placeholder' => 'Symptômes ...');
+		$symp = array('name'=>'symptome','value'=> $symptome, 'disabled'=>'disabled', 'placeholder' => 'Symptômes ...','style' => 'resize:none');
 		echo form_textarea($symp);
 	?>
 	<?php
 		//symptomes
-		$obs = array('name'=>'observation','value'=> $observation, 'disabled'=>'disabled', 'placeholder' => 'Observations ...');
+		$obs = array('name'=>'observation','value'=> $observation, 'disabled'=>'disabled', 'placeholder' => 'Observations ...','style' => 'resize:none');
 		echo form_textarea($obs);
 	?>
 	<br/>
