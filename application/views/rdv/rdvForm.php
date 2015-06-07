@@ -17,11 +17,18 @@
 
 	<p class="name"> <h3> <?php echo strtoupper($nom).' '.ucfirst($prenom); ?> </h3> </p>
 
-	<?php  
+	<?php  	
+
+		$today=date("Y")."-".date("m")."-".date("d",time()-86400);
 
 		echo form_open('RendezVous/saveRDV/'.$numerodossier); 
 
-		$date = array('name'=>'date','value'=>'','placeholder'=>'Date *', 'data-beatpicker' => 'true', 'data-beatpicker-position' => "['right','bottom']");
+		$date = array('name'=>'date','value'=>'','placeholder'=>'Date *', 'data-beatpicker' => 'true', 
+					  'data-beatpicker-position' => "['right','bottom']", 
+			          'data-beatpicker-format'=> "['DD','MM','YYYY']",
+			          'data-beatpicker-module' => "icon,clear,footer",
+			          'data-beatpicker-disable' => "{from:'".$today."',to:'<'}"
+			          );
 		$h = array('name' => 'heure', 'value' => '', 'placeholder' => 'Heure *', 'class' => 'splitField', 'maxlength' => '2');
 		$m = array('name' => 'minute', 'value' => '', 'placeholder' => 'Minute *' , 'class' => 'splitField', 'maxlength' => '2');
 
