@@ -20,20 +20,17 @@
 
                 ?>
 
-                    <p class="error"> <?php echo $this->session->flashdata('connexion_ko'); ?> </p>
+                    <p class="error"> <?php echo $error; ?> </p>
 
-
-                    <p> <?php echo form_input($login); 
-
-                              echo form_error('login'); ?> </p>
+                    <p> <?php echo form_input($login); ?> 
+                    </p>
 
                     <?php 
 
                     $pass= array('name'=>'password','value'=>'','placeholder'=>'Password'); ?>
 
-                    <p> <?php echo form_password($pass); 
-
-                              echo form_error('mot de passe'); ?> </p>
+                    <p> <?php echo form_password($pass);   ?> 
+                    </p>
 
                     <?php
 

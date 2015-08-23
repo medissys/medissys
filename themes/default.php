@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+	<title><?php echo SOFTWARE.' '.VERSION; ?> </title>
 	<head>
 
 	  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">

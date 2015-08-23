@@ -17,14 +17,12 @@ class Identification extends CI_Controller
 
 	public function index(){
 
-		$this->load->view('login');
+		$err = array( 'error' => '' );
+
+		$this->load->view('login',$err);
 	}
 
 	public function login(){
-
-		$error = '';
-
-		$this->load->view('login',$error);
 
 		$login = $this->input->post('login');
 		$mdp = $this->input->post('password');
@@ -39,10 +37,9 @@ class Identification extends CI_Controller
 
 		if ( ($this->form_validation->run() == false) && empty($res)){
 
-			//$array['error'] = AUTHENTIFICATION_ERROR;
-			//$error = AUTHENTIFICATION_ERROR;
-			$this->session->set_flashdata('connexion_ko','login et / ou mot de passe incorrect.');
+			$err = array('error' => AUTHENTIFICATION_ERROR);
 
+			$this->load->view('login',$err);
 		}
 		else{
 
