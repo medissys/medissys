@@ -17,11 +17,13 @@
 
 <div class="consult">
 
+<strong>	
 	<p> <?php /* Match civilite, solution temporaire */ 
-	if ( $header->idCivilite == 1 ) echo 'M. '; else if ( $header->idCivilite == 2 ) echo 'Mme. '; else if ( $header->idCivilite == 3 ) echo 'Mlle. ';
-	    echo ucwords($header->prenom).' '.mb_strtoupper($header->nom);
-	    ?> 
+		if ( $header->idCivilite == 1 ) echo 'M. '; else if ( $header->idCivilite == 2 ) echo 'Mme. '; else if ( $header->idCivilite == 3 ) echo 'Mlle. ';
+		    echo ucwords($header->prenom).' '.mb_strtoupper($header->nom);
+		   ?> 
 	</p>
+</strong>
 	<p> né(e) le <?php echo $header->datenaissance; ?> </p>
 	<br/>
 	<h3 class="sub-title"> - ANTECEDENTS MEDICAUX - </h3>
@@ -43,7 +45,7 @@
 
 			<tr>
 				<td><?php echo ++$i; ?></td>
-				<td><?php echo $value->dateconsultation; ?> </td>
+				<td><strong><?php echo $value->dateconsultation; ?> </strong></td>
 				<td><?php echo $value->symptomes; ?> </td>
 				<td><?php echo $value->observations; ?> </td>
 				<td><?php echo $value->commentaires; ?> </td>

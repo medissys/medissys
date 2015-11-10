@@ -38,6 +38,8 @@ class Consultation extends CI_Controller{
 
 		$numdossier = $this->input->post('numerodossier');
 
+		$error = array('err' => '');
+
 		$config = array(
 					array(
 						'field' => 'numerodossier',
@@ -48,11 +50,11 @@ class Consultation extends CI_Controller{
 
 		$this->form_validation->set_rules($config);
 
-		$this->form_validation->set_error_delimiters('<p class="error">','</p>');
+		$this->form_validation->set_error_delimiters('<p class="error pForm">','</p>');
 
 		if ( $this->form_validation->run() == false ){
 
-			$this->layout->view('consultation/rechercherDossier');
+			$this->layout->view('consultation/rechercherDossier',$error);
 		}
 		else{
 
@@ -62,8 +64,10 @@ class Consultation extends CI_Controller{
 
 			if ( empty($res) ){
 				
-				$this->session->set_flashdata('error','le dossier n\'existe pas');
-				$this->layout->view('consultation/rechercherDossier');
+				$error = array('err' => 'le dossier n\'existe pas');
+
+				//$this->session->set_flashdata('error','le dossier n\'existe pas');
+				$this->layout->view('consultation/rechercherDossier',$error);
 
 			}
 			else{
@@ -274,7 +278,7 @@ class Consultation extends CI_Controller{
 
 		if ( empty($str) ){
 
-			$this->form_validation->set_message('check_field','Veuillez renseigner le numéro de dossier pour effectuer la recherche.');
+			$this->form_validation->set_message('check_numdossier','Veuillez renseigner le numéro de dossier pour effectuer la recherche.');
 
 			return false;
 		}
