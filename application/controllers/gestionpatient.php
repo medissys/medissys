@@ -227,8 +227,6 @@ class GestionPatient extends CI_Controller{
   		$config['num_links'] = 5;
  		$config['use_page_numbers'] = TRUE;
  		$config['display_pages'] = TRUE;
-  		// $config['next_link'] = '>';
-  		// $config['prev_link'] = '<';
   		$config['uri_segment'] = 3;
   		 
   	    $this->pagination->initialize($config);
@@ -247,10 +245,7 @@ class GestionPatient extends CI_Controller{
 		{
 			$page = 1;
 		}
-/*		5-1
-		10 - 6
-		15 - 11
-		20 - 16*/
+
 	 	$res = $this->Gestionpatient_model->getDossier($cfg['per_page'],$page);
 		$i = 0;
 

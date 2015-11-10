@@ -242,7 +242,7 @@ class Gestionpatient_model extends CI_Model{
 		return $this->db->select('numerodossier,nom,prenom,telephone,email,profession,adresse,datenaissance,datecreation')
 				 ->from($this->tableP)
 				 ->order_by('nom','asc')
-				 ->limit($page*$limit,$limit*($page-1))
+				 ->limit($limit,($page-1)*$limit)
 				 ->get()
 				 ->result();
 	}

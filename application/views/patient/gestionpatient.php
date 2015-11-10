@@ -18,7 +18,7 @@
 
 	<br/>
 
-	<p class="pForm"> <strong> Rechercher un dossier :: </strong> </p>
+	<p class="pForm"> <strong> Dossier ::: Rechercher </strong> </p>
 
 	<p class="pForm">
 	<?php 
