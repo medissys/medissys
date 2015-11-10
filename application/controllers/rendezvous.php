@@ -85,6 +85,48 @@ class RendezVous extends CI_Controller{
 		}	
 	}
 
+	public function modifierRDV(){
+
+		//$this->layout->view('rdv/modifier');
+
+		$res = $this->RendezVous_model->getallRDV();
+
+		if ( !empty($res) ){
+			$i = 0;
+
+			foreach ($res as $key => $value) {
+				
+				$data['row'][$i] = $value;
+				$i++;
+			}
+
+			$this->layout->view('rdv/modifier',$data);
+		}
+		else{
+
+			$data['row'] = array();
+
+			$this->layout->view('rdv/modifier',$data);
+
+		}
+	}
+
+	public function modifier($numDossier){
+
+		$heure = $this->loadHeure();
+		$minute = $this->loadMinute();
+
+		$res = $this->RendezVous_model->getData($numDossier);
+
+		$res[0]->error = '';
+
+		$res[0]->heure = $heure;
+
+		$res[0]->minute = $minute;
+
+		$this->layout->view('rdv/modifierRDVForm',$res[0]);
+
+	}
 
 	public function ouvrirDossier($index){
 
@@ -127,17 +169,7 @@ class RendezVous extends CI_Controller{
 						'field' => 'date',
 						'label' => '',
 						'rules' => 'trim|callback_check_required|xss_clean'
-					)/*,
-					array(
-						'field' => 'heure',
-						'label' => '',
-						'rules' => 'trim|callback_check_required|xss_clean'
-					),
-					array(
-						'field' => 'minute',
-						'label' => '',
-						'rules' => 'trim|callback_check_required|xss_clean'
-					)*/
+					)
 				  );
 
 		$this->form_validation->set_rules($config);
@@ -160,6 +192,60 @@ class RendezVous extends CI_Controller{
 			/* Après reformattage date / Heure, on insère en base */
 
 			$indb = $this->RendezVous_model->insertRdv($d,$resH[0]->heure,$resM[0]->minutes,$index);
+
+			if ( $indb ){
+
+				$this->planning();
+			}
+		}
+
+	}
+
+	public function alterRDV($numDossier){
+
+		$res = $this->RendezVous_model->getData($numDossier);
+
+
+		$heure = $this->loadHeure();
+		$minute = $this->loadMinute();
+
+		$res[0]->heure = $heure;
+		$res[0]->minute = $minute;
+
+		$d = $this->input->post('date');
+		$h = $this->input->post('heure');
+		$m = $this->input->post('minute');
+
+		$isCorrect = $this->checkFormatHeure($h,$m);
+
+		$config = array(
+					array(
+						'field' => 'date',
+						'label' => '',
+						'rules' => 'trim|callback_check_required|xss_clean'
+					)
+				  );
+
+		$this->form_validation->set_rules($config);
+
+		$this->form_validation->set_error_delimiters('<p class="error">','</p>');
+
+
+		if ( $this->form_validation->run() == false ){
+
+			$res[0]->error = validation_errors();
+
+			$this->layout->view('rdv/modifierRDVForm',$res[0]);
+
+		}
+		else{
+
+			$resH = $this->RendezVous_model->matchHeure($h);
+			$resM = $this->RendezVous_model->matchMinute($m+1);
+
+			/* Après reformattage date / Heure, on insère en base */
+
+			$indb = $this->RendezVous_model->updateRDV($d,$resH[0]->heure,$resM[0]->minutes,$numDossier);
 
 			if ( $indb ){
 

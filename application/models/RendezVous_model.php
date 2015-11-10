@@ -87,4 +87,17 @@ class RendezVous_model extends CI_Model{
 
 		return $this->db->insert($this->tableR,$data);
 	}
+
+	public function updateRDV($date,$h,$m,$ind){
+
+		$data = array('date' => $date,
+					  'heure' => $h.':'.$m,
+					  'num_dossier' => $ind,
+					  'idStatut' => 1
+					);
+
+		$this->db->where('num_dossier',$ind);
+		return $this->db->update($this->tableR,$data);
+
+	}
 }

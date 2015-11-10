@@ -54,7 +54,7 @@
 	<br/>
 	<?php
 		//telephone
-		$t = array('name'=>'telephone','value'=> $telephone, 'maxlength' => '8', 'placeholder' => 'telephone ...');
+		$t = array('name'=>'telephone','value'=> $telephone, 'maxlength' => '9', 'placeholder' => 'telephone ...');
 		echo form_input($t);
 	?>
 	<br/>

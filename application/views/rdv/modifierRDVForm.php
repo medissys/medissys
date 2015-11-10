@@ -7,7 +7,7 @@
 
 <div id="plainContent">
 	<div class="breadcrumb">
-	<span class="design"> <?php echo 'NOUVEAU RDV - DOSSIER N° '.$numerodossier; ?> </span>
+	<span class="design"> <?php echo 'MODIFIER RDV - DOSSIER N° '.$numerodossier; ?> </span>
 	<hr/>
 	<br/>
 
@@ -22,7 +22,7 @@
 
 		$today=date("Y")."-".date("m")."-".date("d",time()-86400);
 
-		echo form_open('RendezVous/saveRDV/'.$numerodossier); 
+		echo form_open('RendezVous/alterRDV/'.$numerodossier); 
 
 		$date = array('name'=>'date','value'=>'','placeholder'=>'Date *', 'data-beatpicker' => 'true', 
 					  'data-beatpicker-position' => "['right','bottom']", 
@@ -65,13 +65,7 @@
 
 </div>
 
-<p class="error"> 
-
-<?php //echo validation_errors(); 
-		echo $error;//$this->session->userdata('field_required');
-
-?> 
-</p>
+<p class="error"> <?php  echo $error; ?> </p>
 
 <?php  echo css_url('designComponent'); 
 	   echo css_url('table'); 

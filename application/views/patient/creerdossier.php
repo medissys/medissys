@@ -84,9 +84,8 @@
      <p class="pForm"> <?php echo form_input($mail); /*echo form_error('email');*/ ?> </p>
      <p class="pForm"> <?php echo form_input($adresse); ?> </p>
      <p class="pForm"> <?php echo form_input($profession); ?> </p>
-     <p class="pForm"> <?php echo form_textarea($symp);
-               echo form_textarea($diag);
-          ?>
+     <p class="pForm"> <?php echo form_textarea($symp); ?>
+                       <?php echo form_textarea($diag); ?>
      </p>
 
     <p class="pForm"> <?php echo form_submit('commit','OK'); ?> </p> 

@@ -21,7 +21,7 @@ input {
 }
 
 input[type=text], input[type=password] {
-  margin: 5px;
+  /*margin: 5px; */
   padding: 0 10px;
   width: 200px;
   height: 34px;

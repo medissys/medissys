@@ -54,7 +54,7 @@
 		<?php } ?>
 
 		</tbody>
-
+		<?php echo $this->pagination->create_links(); ?>
 	</table>
 </div>
 

@@ -42,3 +42,12 @@ td, th {
 	text-decoration: underline;
 	color: blue;
 }
+
+tr.linkClickable {
+	cursor: pointer;
+}
+
+tr.linkClickable:hover {
+background: #fff;
+
+}

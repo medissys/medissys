@@ -7,7 +7,7 @@
 
 <div id="plainContent">
 	<div class="breadcrumb">
-	<p> <span class="design"> <?php echo 'VOS RDV PLANIFIES'; ?> </span> </p>
+	<p> <span class="design"> <?php echo 'MODIFIER RDV'; ?> </span> </p>
 	<hr/>
 	<br/>
 
@@ -28,8 +28,8 @@
 		<?php foreach ($row as $key => $value) {
 
 		?>
-			<tr>
-				<td> <strong> <?php echo anchor('Consultation/consulter/'.$value->num_dossier,$value->num_dossier,'class="linkTable"'); ?> </strong> </td>
+			<tr class="linkClickable" data-number='"<?php echo $value->num_dossier; ?>"' onclick="document.location.href='modifier/<?php echo $value->num_dossier; ?>'">
+				<td> <strong> <?php echo $value->num_dossier; ?> </strong> </td>
 				<td> <?php echo mb_strtoupper($value->nom); ?> </td>
 				<td> <?php echo ucwords($value->prenom);?> </td>
 				<td> <?php echo $value->date; ?> </td>

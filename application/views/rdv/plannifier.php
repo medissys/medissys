@@ -1,6 +1,7 @@
 <div id="sub-menu">
 
-	<?php echo anchor('RendezVous/nouveauRDV','Planifier RDV'); ?> 
+	<?php echo anchor('RendezVous/nouveauRDV','Planifier RDV'); ?> |
+	<?php echo anchor('RendezVous/modifierRDV','Modifier RDV'); ?>
 
 </div>
 
@@ -27,7 +28,7 @@
 		<tbody> 
 		<?php foreach ($row as $key => $value) { ?>
 			<tr>
-				<td> <?php echo anchor('RendezVous/ouvrirDossier/'.$value->numerodossier,$value->numerodossier,'class="linkTable"'); ?> </td>
+				<td> <strong> <?php echo anchor('RendezVous/ouvrirDossier/'.$value->numerodossier,$value->numerodossier,'class="linkTable"'); ?> </strong></td>
 				<td> <?php echo mb_strtoupper($value->nom); ?> </td>
 				<td> <?php echo ucwords($value->prenom); ?> </td>
 			</tr>

@@ -16,6 +16,7 @@ class GestionPatient extends CI_Controller{
 
 		$this->load->helper('assets');
 		$this->load->library('layout');
+		$this->load->library('pagination');
 
 		$this->load->library('errors'); //TODO: Class à développer pour rendre les variables portables dans les vues;
 
@@ -218,10 +219,39 @@ class GestionPatient extends CI_Controller{
 		//}
 	}
 
+	public function pagination(){
+
+		$config['base_url'] = base_url().'GestionPatient/listeDossier/';
+ 		$config['total_rows'] = $this->db->get('patient')->num_rows();
+ 		$config['per_page'] = 5;
+  		$config['num_links'] = 5;
+ 		$config['use_page_numbers'] = TRUE;
+ 		$config['display_pages'] = TRUE;
+  		// $config['next_link'] = '>';
+  		// $config['prev_link'] = '<';
+  		$config['uri_segment'] = 3;
+  		 
+  	    $this->pagination->initialize($config);
+
+  	    return $config;
+	}
+
 	public function listeDossier(){
 
+	 	$cfg = $this->pagination();
 
-		$res = $this->Gestionpatient_model->getDossier();
+	 	if($this->uri->segment(3)){
+			$page = ($this->uri->segment(3)) ;
+		}
+		else
+		{
+			$page = 1;
+		}
+/*		5-1
+		10 - 6
+		15 - 11
+		20 - 16*/
+	 	$res = $this->Gestionpatient_model->getDossier($cfg['per_page'],$page);
 		$i = 0;
 
 		foreach ($res as $value) {
@@ -230,7 +260,7 @@ class GestionPatient extends CI_Controller{
 
 			$i++;
 		}
-
+		
 		$this->layout->view('patient/listedossier',$data);
 		
 	}
@@ -549,7 +579,7 @@ class GestionPatient extends CI_Controller{
 
 		if ( ($length < LENGTH_MIN || $length > LENGTH_MAX) && !empty($str)){
 
-			$this->form_validation->set_message('check_length','le numéro de téléphone doit comporter 8 caractères');
+			$this->form_validation->set_message('check_length','le numéro de téléphone doit comporter 9 caractères');
 
 			return false;
 
