@@ -33,7 +33,9 @@ class Ordonnance extends CI_Controller{
 
 	public function editerOrdonnance($index){
 
-		$this->layout->view('ordonnance/ordonnance');
+		$this->layout->view('ordonnance/page_en_travaux');
+
+		//$this->layout->view('ordonnance/ordonnance');
 	}
 }
 

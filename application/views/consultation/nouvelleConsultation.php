@@ -1,8 +1,8 @@
 <div id="sub-menu">
 
-	<?php echo anchor('Consultation/consulter/'.$header->numerodossier,'Nouvelle Consultation'); ?> |
-	<?php echo anchor('Consultation/modifierDossier/'.$header->numerodossier,'Modifier Dossier'); ?> |
-	<?php echo anchor('Ordonnance/editerOrdonnance/'.$header->numerodossier,'Editer ordonnance'); ?>
+	<?php echo anchor('Consultation/consulter/'.$header->numerodossier,'Nouvelle consultation'); ?> |
+	<?php echo anchor('Consultation/modifierDossier/'.$header->numerodossier,'Modifier le dossier'); ?> |
+	<?php echo anchor('Ordonnance/editerOrdonnance/'.$header->numerodossier,'Editer une ordonnance'); ?>
 
 </div>
 

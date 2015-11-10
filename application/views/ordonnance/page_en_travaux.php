@@ -12,21 +12,11 @@
 </div>
 
 <div class="consult">
+<br/>
+<br/>
+<br/>
+<h1><p class="pForm"> <?php echo '/!\ MODULE EN TRAVAUX'; ?> </p></h1>
 
-	<br/>
-
-	<?php 
- 		  
- 		  echo form_open(''); 
-
-		  $prescription = array('name'=>'prescription','value'=>'','placeholder'=>'prescription ...','id'=>'liste'); 
-
-		  echo form_textarea($prescription);
-	?> 
-
-    <p class="pForm"> <?php echo form_submit('commit','OK'); ?> </p> 
-
-    <?php echo form_close(); /* Fin du formulaire */ ?>
 
 </div>
 
