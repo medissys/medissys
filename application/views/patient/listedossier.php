@@ -13,7 +13,7 @@
 
 <div id="plainContent">
 	<div class="breadcrumb">
-	<p> <span class="design"> DOSSIER PATIENT </span> </p>
+	<p class="pForm"> <span class="design"> DOSSIER PATIENT </span> </p>
 	<hr/>
 	</div>
 </div>
