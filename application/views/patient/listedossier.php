@@ -21,41 +21,42 @@
 <div class="dashboard">
 
 	<h3 class="sub-title"> - LISTE DES DOSSIERS - </h3>
+	<?php echo $this->pagination->create_links(); ?>
+	<div class="table">
+		<table> 
+			<thead>
+				<tr>
+					<th>N° DOSSIER</th>
+					<th>NOM</th>
+					<th>PRENOM</th>
+					<th>TELEPHONE</th>
+					<th>EMAIL</th>
+					<th>PROFESSION</th>
+					<th>ADRESSE</th>
+					<th>DATE DE NAISSANCE</th>
+					<th>DATE DE CREATION</th>
+				</tr>
+			</thead>
+			
+			<tbody> 
+			<?php foreach ($row as $value) {
+			?>
+				<tr>
+					<td> <strong> <?php echo anchor('Gestionpatient/listeDossier',$value->numerodossier,array('class'=> 'linkTable show-content','attr'=>$value->numerodossier)); ?> </strong> </td>
+					<td> <?php echo mb_strtoupper($value->nom); ?> </td>
+					<td> <?php echo ucwords($value->prenom);?> </td>
+					<td> <?php echo $value->telephone;?> </td>
+					<td> <?php echo $value->email;?> </td>
+					<td> <?php echo $value->profession; ?> </td>
+					<td> <?php echo $value->adresse; ?> </td>
+					<td> <?php echo $value->datenaissance; ?> </td>
+					<td> <?php echo $value->datecreation; ?> </td>
+				</tr>
+			<?php } ?>
 
-	<table> 
-		<thead>
-			<tr>
-				<th>N° DOSSIER</th>
-				<th>NOM</th>
-				<th>PRENOM</th>
-				<th>TELEPHONE</th>
-				<th>EMAIL</th>
-				<th>PROFESSION</th>
-				<th>ADRESSE</th>
-				<th>DATE DE NAISSANCE</th>
-				<th>DATE DE CREATION</th>
-			</tr>
-		</thead>
-		
-		<tbody> 
-		<?php foreach ($row as $value) {
-		?>
-			<tr>
-				<td> <strong> <?php echo anchor('Gestionpatient/listeDossier',$value->numerodossier,array('class'=> 'linkTable show-content','attr'=>$value->numerodossier)); ?> </strong> </td>
-				<td> <?php echo mb_strtoupper($value->nom); ?> </td>
-				<td> <?php echo ucwords($value->prenom);?> </td>
-				<td> <?php echo $value->telephone;?> </td>
-				<td> <?php echo $value->email;?> </td>
-				<td> <?php echo $value->profession; ?> </td>
-				<td> <?php echo $value->adresse; ?> </td>
-				<td> <?php echo $value->datenaissance; ?> </td>
-				<td> <?php echo $value->datecreation; ?> </td>
-			</tr>
-		<?php } ?>
-
-		</tbody>
-		<?php echo $this->pagination->create_links(); ?>
-	</table>
+			</tbody>
+		</table>
+	</div>
 </div>
 
 <div class="hide-content">

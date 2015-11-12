@@ -13,6 +13,7 @@
 </div>
 
 <div class="dashboard"> 
+<div class="table">
 	<table> 
 		<thead>
 			<tr>
@@ -33,6 +34,7 @@
 			</tr>
 		</tbody>
 	</table>
+</div>
 </div>
 
 <?php echo css_url('designComponent'); 

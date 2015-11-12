@@ -1,7 +1,16 @@
 table { 
-		min-width: 800px; 
-		border-collapse: collapse; 
+
+	min-width: 800px;
+	border-collapse: collapse;
+		
 	}
+
+.table { 
+
+	max-width: 800px;
+	overflow-x: scroll;
+}
+
 	/* Zebra striping */
 tr:nth-of-type(odd) { 
 	background: #eee; 
@@ -12,6 +21,8 @@ th {
 	background: rgb(0,150,160);
 	color: white; 
 	font-weight: bold; 
+	max-width: 150px;
+	/*min-width: 80px*/
 }
 td, th { 
 	padding: 6px; 

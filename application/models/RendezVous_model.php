@@ -25,6 +25,7 @@ class RendezVous_model extends CI_Model{
 						->from($this->tableR.' r')
 						->join($this->tableP.' p', 'p.numerodossier = r.num_dossier')
 						->join($this->tableS.' s', 'r.idStatut = s.id')
+						->order_by('r.date','asc')
 						//->where('r.date >=', date('Y-m-d')) /* On récupère les dates de rdv >= àla date du jour */
 						->get()
 						->result();

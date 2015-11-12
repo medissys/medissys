@@ -1,8 +1,9 @@
 <div id="sub-menu">
 
-  <?php echo anchor('Gestionpatient/acceuil','Rechercher'); ?> |
-  <?php echo anchor('Gestionpatient/creerDossier','Creer un dossier'); ?> |
-  <?php echo anchor('Gestionpatient/ModifierDossier','Modifier un dossier'); ?>
+  <?php echo anchor('Gestionpatient/acceuil',HEADER_ANNUAIRE_FIND); ?> |
+  <?php echo anchor('Gestionpatient/creerDossier',HEADER_CREER_DOSSIER); ?> |
+  <?php echo anchor('Gestionpatient/modifierDossier',HEADER_MODIF_DOSSIER); ?> |
+  <?php echo anchor('Gestionpatient/listeDossier',HEADER_LIST_DOSSIER); ?>
 
 </div>
 

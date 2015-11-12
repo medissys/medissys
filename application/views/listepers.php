@@ -13,6 +13,7 @@
 </div>
 
 <div class="dashboard"> 
+<div class="table">
 	<table> 
 		<thead>
 			<tr>
@@ -38,6 +39,7 @@
 			<?php } ?>
 		</tbody>
 	</table>
+</div>
 </div>
 
 <div class="error"> <?php echo $this->session->flashdata('recherche_users_ko'); ?> </div>

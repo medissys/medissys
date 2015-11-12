@@ -27,6 +27,7 @@
 	<p> né(e) le <?php echo $header->datenaissance; ?> </p>
 	<br/>
 	<h3 class="sub-title"> - ANTECEDENTS MEDICAUX - </h3>
+<div class="table">
 	<table> 
 		<thead>
 			<tr>
@@ -53,7 +54,7 @@
 			<?php } ?>
 		</tbody>
 	</table>
-
+</div>
 	<br/>
 	<br/>
 
