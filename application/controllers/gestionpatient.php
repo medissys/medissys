@@ -391,8 +391,6 @@ class GestionPatient extends CI_Controller{
 						  'adresse' => $adresse, 'profession' => $profession, 'symptome' => $symp);
 
 			$this->layout->view('patient/creerdossier',$var);
-			//$this->layout->view('patient/creerdossier',$error,$var);
-			//$this->load->view('patient/creerdossier_error');
 
 		}
 		else{

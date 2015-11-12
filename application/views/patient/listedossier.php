@@ -49,8 +49,8 @@
 					<td> <?php echo $value->email;?> </td>
 					<td> <?php echo $value->profession; ?> </td>
 					<td> <?php echo $value->adresse; ?> </td>
-					<td> <?php echo $value->datenaissance; ?> </td>
-					<td> <?php echo $value->datecreation; ?> </td>
+					<td> <?php echo date_format(date_create($value->datenaissance),"d-m-Y"); ?> </td>
+					<td> <?php echo date_format(date_create($value->datecreation),"d-m-Y H:i:s"); ?> </td>
 				</tr>
 			<?php } ?>
 
