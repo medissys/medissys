@@ -40,6 +40,9 @@
 		</tbody>
 	</table>
 </div>
+<div class="icon">
+<?php echo img('user_logo','png','user_logo'); ?>
+</div>
 </div>
 
 <div class="error"> <?php echo $this->session->flashdata('recherche_users_ko'); ?> </div>

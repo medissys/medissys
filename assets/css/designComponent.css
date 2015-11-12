@@ -131,3 +131,11 @@ p.pForm {
 .autocomplete-selected { background: #F0F0F0; }
 .autocomplete-suggestions strong { font-weight: normal; color: #3399FF; }
 
+.search_logo{
+  margin-left: 10px;
+}
+
+.consult{
+  width:800px;
+  display: inline-block;
+}

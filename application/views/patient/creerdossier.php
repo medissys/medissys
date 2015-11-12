@@ -95,12 +95,15 @@
     <?php echo form_close(); /* Fin du formulaire */ ?>
 
 </div>
+<div class="icon icon_edit">
+<?php echo img('edit_dossier','png','creer_dossier'); ?>
+</div>
 
 <?php echo $error; ?>
 
 <?php 
       echo css_url('designComponent');
-      //echo css_url('designComponent');
+      echo css_url('table');
       //echo js_url('jquery-2.min');
 	    //echo js_url('loader');
 ?>

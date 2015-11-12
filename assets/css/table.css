@@ -9,9 +9,22 @@ table {
 
 	max-width: 800px;
 	overflow-x: scroll;
+	display: inline-block;
+}
+.icon{
+	display: inline-block;
+	position: relative;
+	float: right;
+	margin-right: 100px;
 }
 
-	/* Zebra striping */
+.icon_edit{
+	top:150px;
+}
+.icon_modif{
+	top:75px;
+}
+/* Zebra striping */
 tr:nth-of-type(odd) { 
 	background: #eee; 
 	/*background: rgb(0,142,159)*/
@@ -32,6 +45,9 @@ td, th {
 
 .dashboard{
     margin-top: 30px;
+    position: relative;
+    /*width:800px;
+    display: inline-block;*/
 }
 /*
 .dashboard h3{

@@ -6,13 +6,15 @@
 </div>
 
 <div id="plainContent">
+	
 	<div class="breadcrumb">
 	<p> <span class="design"> <?php echo 'VOS RDV PLANIFIES'; ?> </span> </p>
 	<hr/>
 	<br/>
 
 	</div>
-
+</div>
+<div class="table">
 	<table> 
 		<thead>
 			<tr>
@@ -40,11 +42,9 @@
 		</tbody>
 	</table>
 </div>
-
-<div class="consult">
-
+<div class="icon">
+	<?php echo img('rdv_plannifie','png','agenda'); ?>
 </div>
-
 <p class="error"> <?php echo validation_errors(); ?> </p>
 
 <?php  echo css_url('designComponent'); 

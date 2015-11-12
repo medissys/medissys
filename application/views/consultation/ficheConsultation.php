@@ -42,6 +42,9 @@
     <?php echo form_close(); /* Fin du formulaire */ ?>
 
 </div>
+ <div class="icon icon_edit">
+ 	<?php echo img('logo_consultation','png','logo consultation'); ?>
+ </div>
 
 <p class="error"> <?php echo validation_errors(); ?> </p>
 

@@ -37,6 +37,10 @@
 			</tbody>
 		</table>
 	</div>
+
+	<div class="icon">
+		<?php echo img('logo_acceuil','png','logo acceuil'); ?>
+	</div>
 </div>
 <?php echo css_url('table'); 
 	  echo css_url('designComponent');

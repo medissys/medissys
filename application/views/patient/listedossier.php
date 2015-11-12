@@ -18,10 +18,10 @@
 	</div>
 </div>
 
-<div class="dashboard">
+<div class="consult">
 
 	<h3 class="sub-title"> - LISTE DES DOSSIERS - </h3>
-	<?php echo $this->pagination->create_links(); ?>
+	<p class="pForm"> <?php echo $this->pagination->create_links(); ?><p>
 	<div class="table">
 		<table> 
 			<thead>
@@ -58,8 +58,11 @@
 		</table>
 	</div>
 </div>
+<div class="icon icon_edit">
+	<?php echo img('logo_liste','png','liste dossier'); ?>
+</div>
 
-<div class="hide-content">
+<!--div class="hide-content">
 		
 	<h3 class="sub-title"> - HISTORIQUE DES CONSULTATIONS - </h3>
 
@@ -89,7 +92,7 @@
 				<?php //} ?>
 		</tbody>
 	</table>
-</div>
+</div-->
 
 
 <?php 

@@ -9,10 +9,11 @@
 	</head>
 	<body>
 		<div class="firstBar">
-			<p> Bonjour Docteur. <?php //echo strtoupper($id); ?>
+			<p> <strong>MEDISSYS .</strong> <?php //echo strtoupper($id); ?>
 
 				<span class="deconnexion"> 
-					<?php echo anchor('Logout/deconnect','Deconnexion'); ?>
+					<?php echo anchor('Logout/deconnect','Deconnexion'); 
+						  img('logout','png','logout'); ?>
 				</span>
 			</p>
 		</div>
