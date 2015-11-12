@@ -12,7 +12,7 @@
 	<br/>
 
 	</div>
-
+	<p class="pForm"> <?php echo $this->pagination->create_links(); ?><p>
 	<table> 
 		<thead>
 			<tr>

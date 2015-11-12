@@ -12,6 +12,7 @@ class RendezVous extends CI_Controller{
 
 		$this->load->helper('assets');
 		$this->load->library('layout');
+		$this->load->library('pagination');
 
 		$this->load->library('errors'); //TODO: Class à développer pour rendre les variables portables dans les vues;
 
@@ -35,10 +36,64 @@ class RendezVous extends CI_Controller{
 			redirect();
 		}
 	}
+
+	public function pagination(){
+
+		$per_page = 10;
+
+		$config = array (
+					'planning' => array(
+									'base_url' => base_url().'RendezVous/planning/',
+									'total_rows' => $this->db->get('rdv')->num_rows(),
+									'per_page' => $per_page,
+									'num_links' => 5,
+									'use_page_numbers' => TRUE,
+									'display_pages' => TRUE,
+									'uri_segment' => 3
+								 ),
+					'nouveauRDV' => array(
+									'base_url' => base_url().'RendezVous/nouveauRDV/',
+									'total_rows' => $this->db->get('patient')->num_rows(),
+									'per_page' => $per_page,
+									'num_links' => 5,
+									'use_page_numbers' => TRUE,
+									'display_pages' => TRUE,
+									'uri_segment' => 3
+								 ),
+					'modifierRDV' => array(
+									'base_url' => base_url().'RendezVous/modifierRDV/',
+									'total_rows' => $this->db->get('rdv')->num_rows(),
+									'per_page' => $per_page,
+									'num_links' => 5,
+									'use_page_numbers' => TRUE,
+									'display_pages' => TRUE,
+									'uri_segment' => 3
+								 )
+
+				);
+
+  	    return $config;
+	}
+
 	
 	public function planning(){
 
-		$res = $this->RendezVous_model->getallRDV();
+		$cfg = $this->pagination();
+
+
+		$this->pagination->initialize($cfg['planning']);
+
+	 	if($this->uri->segment(3)){
+			$page = ($this->uri->segment(3));
+		}
+		else
+		{
+			$page = 1;
+		}
+
+	 	$res = $this->RendezVous_model->getallRDV($cfg['planning']['per_page'],$page);
+
+		//$res = $this->RendezVous_model->getallRDV();
 
 		if ( !empty($res) ){
 			$i = 0;
@@ -62,7 +117,19 @@ class RendezVous extends CI_Controller{
 
 	public function nouveauRDV(){
 
-		$result = $this->RendezVous_model->getAllDossier();
+		$cfg = $this->pagination();
+
+		$this->pagination->initialize($cfg['nouveauRDV']);
+
+	 	if($this->uri->segment(3)){
+			$page = ($this->uri->segment(3)) ;
+		}
+		else
+		{
+			$page = 1;
+		}
+
+		$result = $this->RendezVous_model->getAllDossier($cfg['nouveauRDV']['per_page'],$page);
 
 		if ( !empty($result) ){
 
@@ -87,9 +154,19 @@ class RendezVous extends CI_Controller{
 
 	public function modifierRDV(){
 
-		//$this->layout->view('rdv/modifier');
+		$cfg = $this->pagination();
 
-		$res = $this->RendezVous_model->getallRDV();
+		$this->pagination->initialize($cfg['modifierRDV']);
+
+	 	if($this->uri->segment(3)){
+			$page = ($this->uri->segment(3)) ;
+		}
+		else
+		{
+			$page = 1;
+		}
+
+	 	$res = $this->RendezVous_model->getallRDV($cfg['nouveauRDV']['per_page'],$page);
 
 		if ( !empty($res) ){
 			$i = 0;

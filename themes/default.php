@@ -12,8 +12,7 @@
 			<p> <strong>MEDISSYS .</strong> <?php //echo strtoupper($id); ?>
 
 				<span class="deconnexion"> 
-					<?php echo anchor('Logout/deconnect','Deconnexion'); 
-						  img('logout','png','logout'); ?>
+					<?php echo anchor('Logout/deconnect','Deconnexion'); ?>
 				</span>
 			</p>
 		</div>

@@ -8,6 +8,7 @@
 
 <div class="dashboard">
 	<p class="board pForm"> DASHBOARD - MES RDV</p>
+	<p class="pForm"> <?php echo $this->pagination->create_links(); ?> <p>
 	<div class="table">
 		<table> 
 			<thead>

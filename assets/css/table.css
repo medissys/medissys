@@ -75,6 +75,6 @@ tr.linkClickable {
 }
 
 tr.linkClickable:hover {
-background: #fff;
+background: rgb(50, 142, 159);;
 
 }
