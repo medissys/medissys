@@ -83,7 +83,7 @@ class RendezVous_model extends CI_Model{
 
 	public function insertRdv($date,$h,$m,$ind){
 
-		$data = array('date' => $date,
+		$data = array('date' => date_format(date_create($date),"Y-m-d"),
 					  'heure' => $h.':'.$m,
 					  'num_dossier' => $ind,
 					  'idStatut' => 1
@@ -94,7 +94,7 @@ class RendezVous_model extends CI_Model{
 
 	public function updateRDV($date,$h,$m,$ind){
 
-		$data = array('date' => $date,
+		$data = array('date' => date_format(date_create($date),"Y-m-d"),
 					  'heure' => $h.':'.$m,
 					  'num_dossier' => $ind,
 					  'idStatut' => 1
