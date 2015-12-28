@@ -1,13 +1,13 @@
 <div id="plainContent">
 	<div class="breadcrumb">
-	<p> <span class="design"> ACCEUIL </span> ::: medical software administration. Nous sommes le <?php echo strftime("%d %B %Y"); //date("d/m/Y").', '.date("H:i"); ?> </p>
+	<p class="pForm"> <span class="design"> ACCEUIL </span> ::: medical software administration. Nous sommes le <?php echo strftime("%d %B %Y"); //date("d/m/Y").', '.date("H:i"); ?> </p>
 	<?php //TODO: Convertir date en Français ?>
 	<hr/>
 	</div>
 </div>
 
 <div class="dashboard">
-	<p class="board"> DASHBOARD - MES RDV</p>
+	<p class="board pForm"> DASHBOARD - MES RDV</p>
 	<table> 
 		<thead>
 			<tr>
@@ -37,4 +37,5 @@
 	</table>
 	</div>
 </div>
-<?php echo css_url('table'); ?>
+<?php echo css_url('table'); 
+	  echo css_url('designComponent'); ?>

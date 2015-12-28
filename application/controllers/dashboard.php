@@ -40,8 +40,11 @@ class Dashboard extends CI_Controller{
 		$this->layout->getId($this->session->userdata('nom'));
 
 		$res = $this->RendezVous_model->getallRDV();
+		
 
 		if ( !empty($res) ){
+
+			$this->checkStatut($res);
 
 			$i = 0;
 
@@ -61,6 +64,27 @@ class Dashboard extends CI_Controller{
 			$this->layout->view('acceuil',$data);
 
 		}
+	}
+
+	public function checkStatut($r = array()){
+
+		$i = 0;
+
+		/*foreach ($r as $key => $value) {
+
+				$data['row'][$i] = $value;
+
+				$dateRdv = $data['row'][$i]->date;
+				$heure = $data['row'][$i]->heure;
+
+				$datePrev = new DateTime($dateRdv)
+				$Ddate  = new DateTime($dateNext);
+
+				if ( var_dump($dateNext))  
+				$i++;
+				echo $date;
+		}*/
+		
 	}
 }
 ?>
