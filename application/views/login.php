@@ -1,5 +1,13 @@
 <!DOCTYPE html>
 <html>
+     <?php 
+
+        echo css_url('login'); 
+        echo css_url('designComponent');
+        echo js_url('jquery-2.min');
+        echo js_url('dataScript');
+
+     ?> 
     <head>
         <title></title>
         <meta charset="UTF-8">
@@ -16,11 +24,14 @@
 
                     echo form_open('Identification/login');
 
-                    $login = array('name'=>'login','value'=>'','placeholder'=>'Login ...'); 
+                    $login = array('name'=>'login','value'=> $id ,'placeholder'=>'Login ...'); 
 
                 ?>
 
-                    <p class="error"> <?php echo $error; ?> </p>
+                <div data-error='<?php echo $msg; ?>' class="summaryError">
+                    <!--p class="error"> <?php // echo $error; ?> </p-->
+                    <span class="textError"> <?php echo $error; ?> </span>
+                </div>
 
                     <p> <?php echo form_input($login); ?> 
                     </p>
@@ -36,7 +47,7 @@
 
                     $checkbox = array('name'=>'remember_me','id'=>'remember_me'); ?>
 
-                    <p class="submit"> <?php echo form_submit('commit','Login'); ?> </p> <?php
+                    <p class="submit"> <?php echo form_submit('commit','Login','class=submitForm'); ?> </p> <?php
 
                 echo form_close(); /* Fin du formulaire */
 
@@ -49,13 +60,5 @@
             </div>
         </section>
     </body>
-
-     <?php 
-
-        echo css_url('login'); 
-        echo css_url('designComponent');
-
-     ?> <!-- charger css formulaire de connexion -->
-
 
 </html>

@@ -36,7 +36,6 @@ class Gestionpatient_model extends CI_Model{
 
 	public function creerDossier($array){
 
-		//$numerodossier = $this->genererNumeroDossier($array['nom'],$array['prenom']);
 		$numerodossier = $this->genererNumeroDossier();
 		$date = getdate();
 		$day = $date['mday'];
@@ -56,11 +55,8 @@ class Gestionpatient_model extends CI_Model{
 					'telephone'     => $array['tel'],
 					'email'	        => $array['mail'],
 					'adresse'       => $array['adresse'],
-					'profession'    => $array['profession'],
-					//'symptome'      => $array['symptome'],
-					//'observation'   => $array['observation'],				
+					'profession'    => $array['profession'],			
 					'datenaissance' => $array['date_naissance'],
-					//'datecreation'  => $year.'/'.$month.'/'.$day.' '.$hour.':'.$minute.':'.$seconds
 					'datecreation'  => $datecreation
 				);
 
@@ -82,15 +78,6 @@ class Gestionpatient_model extends CI_Model{
 		return $this->db->insert($this->tableC,$data);
 
 	}
-
-	/*public function genererNumeroDossier($nom,$prenom){
-
-		$codePrenom = substr($prenom,0,2);
-		$codeNom = substr($nom,0,2);
-		$dateC = getdate();
-
-		return strtoupper($codePrenom).''.$dateC[0].''.strtoupper($codeNom);
-	}*/
 
 	public function genererNumeroDossier(){
 
@@ -173,25 +160,6 @@ class Gestionpatient_model extends CI_Model{
 						->get()
 						->result();
 	}
-
-	/*public function findDossier($nom){
-
-		return $this->db->select('*')
-						->from($this->tableP)
-						->where('nom',$nom)
-						->where('nom !=','')
-						->get()
-						->result();
-	}*/
-
-	/*public function getDataBoard($numDossier){
-
-		return $this->db->select('*')
-						->from($this->tableP)
-						->where('numerodossier',$numDossier)
-						->get()
-						->result();
-	}*/
 
 	public function getDataBoard($numDossier){
 

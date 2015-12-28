@@ -28,7 +28,7 @@
 
 <p> Telephone: <strong> <?php echo $header->telephone; ?> </strong> </p>
 
-<p> Date de naissance: <strong> <?php echo $header->datenaissance; ?> </strong> </p>
+<p> Date de naissance: <strong> <?php echo date_format(date_create($header->datenaissance),"d-m-Y"); ?> </strong> </p>
 
 <br />
 
@@ -52,7 +52,7 @@
 
 			<tr>
 				<td><?php echo ++$i; ?></td>
-				<td><?php echo $value->dateconsultation; ?> </td>
+				<td><?php echo date_format(date_create($value->dateconsultation),"d-m-Y H:i:s"); ?> </td>
 				<td><?php echo $value->symptomes; ?> </td>
 				<td><?php echo $value->observations; ?> </td>
 				<td><?php echo $value->commentaires; ?> </td>
@@ -64,6 +64,4 @@
 </div>
 
 <?php echo css_url('table'); ?>
-
-
-<?php  echo css_url('designComponent');?>
+<?php  echo css_url('designComponent'); ?>

@@ -9,22 +9,26 @@ class RendezVous_model extends CI_Model{
 	protected $tableS = 'statut_rdv';
 
 
-	public function getAllDossier(){
+	public function getAllDossier($limit,$page){
 
 		return $this->db->select('*')
 						->from($this->tableP)
 						->where('numerodossier !=','')
 						->where('nom !=','')
+						->order_by('nom','asc')
+						->limit($limit,($page-1)*$limit)
 						->get()
 						->result();
 	}
 
-	public function getallRDV(){
+	public function getallRDV($limit,$page){
 
 		return $this->db->select('r.num_dossier,r.date,r.heure,p.nom,p.prenom,s.type')
 						->from($this->tableR.' r')
 						->join($this->tableP.' p', 'p.numerodossier = r.num_dossier')
 						->join($this->tableS.' s', 'r.idStatut = s.id')
+						->order_by('r.date','asc')
+						->limit($limit,($page-1)*$limit)
 						//->where('r.date >=', date('Y-m-d')) /* On récupère les dates de rdv >= àla date du jour */
 						->get()
 						->result();
@@ -79,7 +83,7 @@ class RendezVous_model extends CI_Model{
 
 	public function insertRdv($date,$h,$m,$ind){
 
-		$data = array('date' => $date,
+		$data = array('date' => date_format(date_create($date),"Y-m-d"),
 					  'heure' => $h.':'.$m,
 					  'num_dossier' => $ind,
 					  'idStatut' => 1
@@ -90,7 +94,7 @@ class RendezVous_model extends CI_Model{
 
 	public function updateRDV($date,$h,$m,$ind){
 
-		$data = array('date' => $date,
+		$data = array('date' => date_format(date_create($date),"Y-m-d"),
 					  'heure' => $h.':'.$m,
 					  'num_dossier' => $ind,
 					  'idStatut' => 1

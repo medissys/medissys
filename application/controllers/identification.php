@@ -2,6 +2,7 @@
 
 class Identification extends CI_Controller
 {
+	protected $count = 0;
 
 	public function __construct(){
 
@@ -12,14 +13,19 @@ class Identification extends CI_Controller
 		$this->load->helper('form'); /* chargement du helper formulaire */
 
 		$this->load->library('form_validation'); /* chargement de la librairie de validation des formulaires */
+		$this->load->library('layout');
+
 
 	}
 
 	public function index(){
 
-		$err = array( 'error' => '' );
+		$err = array( 'error' => '', 'msg' => 'false' ,'id' => '');
 
 		$this->load->view('login',$err);
+
+		echo 'on passe la';
+		//$this->login();
 	}
 
 	public function login(){
@@ -36,10 +42,16 @@ class Identification extends CI_Controller
 
 
 		if ( ($this->form_validation->run() == false) && empty($res)){
+			
+			echo $this->count;
+			//if ( $this->count == 0) {
 
-			$err = array('error' => AUTHENTIFICATION_ERROR);
+				$var = array('error' => AUTHENTIFICATION_ERROR, 'msg' => 'true', 'id' => $login);
 
-			$this->load->view('login',$err);
+				$this->load->view('login',$var);
+				
+				$this->count++;
+			//}
 		}
 		else{
 

@@ -8,7 +8,9 @@
 
 <div id="plainContent">
 	<div class="breadcrumb">
-	<p class="pForm"> <span class="design"> <?php echo TITLE_FIND_USER; ?> </span> </p>
+	<p class="pForm"> <span class="design"> <?php echo TITLE_FIND_USER; ?> </span> 
+					  <span class="search_logo"> <?php echo img('edit_find','png','search_logo'); ?> </span>
+	</p>
 	<hr/>
 	</div>
 </div>
@@ -17,12 +19,12 @@
 	<br/>
 	<br/>
 
-	<p class="pForm"> <strong> Rechercher un collaborateur :: </strong> </p>
+	<p class="pForm"> <strong> Rechercher ::: collaborateur </strong> </p>
 
 	<br/>
 	<?php echo form_open('Gestionpers/consulterFiche'); 
 
-		  $login = array('name'=>'login','value'=>'','placeholder'=>'login', 'id'=>'autocomplete'); 
+		  $login = array('name'=>'login','value'=>'','placeholder'=>'Login', 'id'=>'autocomplete'); 
 	?>
 
 	<p class="pForm"> 
@@ -41,7 +43,7 @@
 
 </div>
 
-<p class="error"> <?php if (!isset($erreur)) $erreur =''; else echo $erreur; ?> </p>
+<p class="error pForm"> <?php if (!isset($erreur)) $erreur =''; else echo $erreur; ?> </p>
 <!--div class="error"> <?php //echo $this->session->flashdata('recherche_user_ko'); ?> </div-->
 
 <?php //echo css_url('login'); 

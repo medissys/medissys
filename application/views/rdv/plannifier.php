@@ -16,7 +16,7 @@
 	
 <div class="consult">
 	<h3> - PATIENTS - </h3>
-
+	<p class="pForm"> <?php echo $this->pagination->create_links(); ?><p>
 	<table> 
 		<thead>
 			<tr>

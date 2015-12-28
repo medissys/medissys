@@ -30,31 +30,33 @@
 		 }
 	?>
 
-	<p class="pForm"> 
+	<strong> <p class="pForm"> 
 
 		<?php 
-    echo form_label('civilite: ');
+    echo form_label('Civilite: ');
 		echo form_dropdown('civilite',$options); 
       //TODO: Remplacer civilité par Sexe.
     ?> 
-  </p>
+  </p> </strong>
     <?php 
-    	    $nom = array('name'=>'nom','value'=>set_value('nom'), 'placeholder'=>'* nom ...'); 
-          $prenom = array('name'=>'prenom','value'=> set_value('prenom'),'placeholder'=>'* prenom ...');
-          $telephone = array('name'=>'telephone','value'=>set_value('telephone'), 'maxlength' => '9', 'placeholder'=>'* telephone ...');
-          $mail = array('name'=>'email','value'=> set_value('email'),'placeholder'=>'email ...');
-          $profession = array('name'=>'profession','value'=> set_value('profession'),'placeholder'=>'profession ...');
-          $adresse = array('name'=>'adresse','value'=> set_value('adresse'),'placeholder'=>'adresse (quartier) ...');
-          $symp = array('name' => 'symptome', 'value' => set_value('symptome'), 'placeholder' => '* symptômes ... ', 'style' => 'resize:none');
+          
+    	    $name = array('name'=>'nom', 'value'=> $nom, 'placeholder'=>'* nom ...'); 
+          $subname = array('name'=>'prenom','value'=> $prenom, 'placeholder'=>'* prenom ...');
+          $telephone = array('name'=>'telephone','value'=> $tel, 'maxlength' => '9', 'placeholder'=>'* telephone ...');
+          $email = array('name'=>'email','value'=> $mail,'placeholder'=>'email ...');
+          $work = array('name'=>'profession','value'=> $profession,'placeholder'=>'profession ...');
+          $adr = array('name'=>'adresse','value'=> $adresse, 'placeholder'=>'adresse (quartier) ...');
+          $symp = array('name' => 'symptome', 'value' => $symptome, 'placeholder' => '* symptômes ... ', 'style' => 'resize:none');
           $diag = array('name' => 'diagnostic', 'value' => '', 'placeholder' => 'observations ... ', 'style' => 'resize:none');
+    
     ?>
 
 	<p class="pForm"> 
-		<?php  echo form_input($nom); 
-			     echo form_input($prenom); ?> 
+		<?php  echo form_input($name); 
+			     echo form_input($subname); ?> 
     </p>
 
-    <p class="pForm"> <?php echo form_label('Date de naissance : '); 
+   <strong> <p class="pForm"> <?php echo form_label('Date de naissance : '); 
 
     		  foreach ( $d['array_jours'] as $index => $value ) { /* On boucle sur $d['array_jours'] pour ne sélectionner que les jours */
 
@@ -76,14 +78,14 @@
     		  }
 
     		  echo form_dropdown('annees',$year); ?> 
-    </p>
+    </p> </strong>
 
      <p class="pForm"> <?php echo form_input($telephone); ?> 
     </p>
 
-     <p class="pForm"> <?php echo form_input($mail); /*echo form_error('email');*/ ?> </p>
-     <p class="pForm"> <?php echo form_input($adresse); ?> </p>
-     <p class="pForm"> <?php echo form_input($profession); ?> </p>
+     <p class="pForm"> <?php echo form_input($email); /*echo form_error('email');*/ ?> </p>
+     <p class="pForm"> <?php echo form_input($adr); ?> </p>
+     <p class="pForm"> <?php echo form_input($work); ?> </p>
      <p class="pForm"> <?php echo form_textarea($symp); ?>
                        <?php echo form_textarea($diag); ?>
      </p>
@@ -92,16 +94,16 @@
 
     <?php echo form_close(); /* Fin du formulaire */ ?>
 
-   <p class="error pForm"> <?php echo $this->session->flashdata('error_fields'); ?> </p>
-
+</div>
+<div class="icon icon_edit">
+<?php echo img('edit_dossier','png','creer_dossier'); ?>
 </div>
 
-<p class="error pForm"> <?php echo $this->session->flashdata('recherche_dossier_ko'); ?> </p>
-
+<?php echo $error; ?>
 
 <?php 
       echo css_url('designComponent');
-      //echo css_url('designComponent');
+      echo css_url('table');
       //echo js_url('jquery-2.min');
 	    //echo js_url('loader');
 ?>

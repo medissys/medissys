@@ -46,7 +46,7 @@ class GestionPers extends CI_Controller{
 		if ( empty($res) ){
 
 			//$this->acceuil();
-			$err = array('erreur' => 'ERREUR: Ce login ou ce matricule n\'existe pas');
+			$err = array('erreur' => 'Ce login ou ce matricule n\'existe pas');
 			$this->layout->view('gestionpers',$err);
 			//$this->session->set_flashdata('recherche_user_ko','ERREUR: Ce login ou ce matricule n\'existe pas');
 

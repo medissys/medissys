@@ -1,6 +1,9 @@
 <div id="plainContent">
 	<div class="breadcrumb">
-	<p class="pForm"> <span class="design"> <?php echo TITLE_FIND_DIR_CONSULT; ?></span> </p>
+	<p class="pForm"> 
+		<span class="design"> <?php echo TITLE_FIND_DIR_CONSULT; ?></span> 
+		<span class="search_logo"> <?php echo img('ouvrir_dossier','png','ouvrir_dossier'); ?> </span>
+	</p>
 	<hr/>
 	<br/>
 	<br/>
@@ -25,4 +28,5 @@
 
 <?php echo validation_errors(); ?>
 <strong> <p class="error pForm"> <?php echo $err; ?> </p> </strong>
+
 <?php  echo css_url('designComponent'); ?> 

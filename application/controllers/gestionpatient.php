@@ -22,7 +22,7 @@ class GestionPatient extends CI_Controller{
 
 		$this->load->helper('form');
 		$this->load->library('form_validation');
-		$this->form_validation->set_error_delimiters('<p class="error">','</p>');
+		$this->form_validation->set_error_delimiters('<p class="error pForm">','</p>');
 
 		$this->layout->ajouter_css('layout');
 
@@ -312,12 +312,14 @@ class GestionPatient extends CI_Controller{
 
 	public function creerDossier(){
 
-		$civilite = $this->loadCivilite();
-		$date = $this->loadDateNaissance();
+		//$error = array( 'err' => '' );
 
-		$var = array('c' => $civilite, 'd' => $date);
+		//$civilite = $this->loadCivilite();
+		//$date = $this->loadDateNaissance();
 
-		$this->layout->view('patient/creerdossier',$var);
+		//$var = array('c' => $civilite, 'd' => $date, 'error' => '');
+		
+		//$this->layout->view('patient/creerdossier',$var);
 
 		/* Récupération des données postées */
 		$civilite = $this->input->post('civilite') + 1;
@@ -374,21 +376,24 @@ class GestionPatient extends CI_Controller{
 					)
 			);
 
-		$this->form_validation->set_message('valid_email', 'veuillez entrer un email valide :: exemple: totoemail@email.fr');
+		$this->form_validation->set_message('valid_email', 'veuillez entrer un email valide :: exemple: email@serveur.fr');
 
 		$this->form_validation->set_rules($config);
-
-		$this->form_validation->set_error_delimiters('<p class="error">','</p>');
 
 		/* Fin de la customisation */
 
 		if ( $this->form_validation->run() == false ){
 
-			$this->load->view('patient/creerdossier_error');
+			$civilite = $this->loadCivilite();
+			$date = $this->loadDateNaissance();
+
+			$var = array('c' => $civilite, 'd' => $date, 'error' => validation_errors(), 'nom' => $nom, 'prenom' => $prenom, 'tel' => $telephone, 'mail' => $email,
+						  'adresse' => $adresse, 'profession' => $profession, 'symptome' => $symp);
+
+			$this->layout->view('patient/creerdossier',$var);
 
 		}
 		else{
-
 			// Database matching date;
 			$fullDate = $this->Gestionpatient_model->matchDate($jour,$mois,$annees);
 
@@ -526,7 +531,7 @@ class GestionPatient extends CI_Controller{
 
 		if ( empty($str) && $this->count == 0 ){
 
-			$this->form_validation->set_message('check_required','les champs contenant un (*) sont obligatoires.');
+			$this->form_validation->set_message('check_required','Les champs contenant un (*) sont obligatoires.');
 
 			$this->count++;
 

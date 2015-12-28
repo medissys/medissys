@@ -1,90 +1,1 @@
-<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
-
-class Dashboard extends CI_Controller{
-
-	public function __construct(){
-
-		parent::__construct();
-
-		$this->sess_user();
-
-		$this->load->helper('assets');
-
-		$this->load->library('layout');
-
-		$this->load->model('Dashboard_model');
-		$this->load->model('RendezVous_model');
-
-		$this->layout->ajouter_css('layout');
-
-		setlocale(LC_TIME, "fr_FR");
-
-	}
-
-	public function index(){
-
-		$this->load->view('acceuil');
-	}
-
-	public function sess_user(){
-
-		if ( ! $this->session->userdata('nom') ) {
-
-			//redirect('Idenfication/index','refresh');
-			redirect();
-		}
-	}
-
-	public function acceuil(){
-
-		$this->layout->getId($this->session->userdata('nom'));
-
-		$res = $this->RendezVous_model->getallRDV();
-		
-
-		if ( !empty($res) ){
-
-			$this->checkStatut($res);
-
-			$i = 0;
-
-			foreach ($res as $key => $value) {
-				
-				$data['row'][$i] = $value;
-				$i++;
-			}
-
-			$this->layout->view('acceuil',$data);
-
-		}
-		else{
-
-			$data['row'] = array();
-
-			$this->layout->view('acceuil',$data);
-
-		}
-	}
-
-	public function checkStatut($r = array()){
-
-		$i = 0;
-
-		/*foreach ($r as $key => $value) {
-
-				$data['row'][$i] = $value;
-
-				$dateRdv = $data['row'][$i]->date;
-				$heure = $data['row'][$i]->heure;
-
-				$datePrev = new DateTime($dateRdv)
-				$Ddate  = new DateTime($dateNext);
-
-				if ( var_dump($dateNext))  
-				$i++;
-				echo $date;
-		}*/
-		
-	}
-}
-?>
+<?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');class Dashboard extends CI_Controller{	public function __construct(){		parent::__construct();		$this->sess_user();		$this->load->helper('assets');		$this->load->library('layout');		$this->load->library('pagination');		$this->load->model('Dashboard_model');		$this->load->model('RendezVous_model');		$this->layout->ajouter_css('layout');		setlocale(LC_TIME, "fr_FR");	}	public function index(){		$this->load->view('acceuil');	}	public function sess_user(){		if ( ! $this->session->userdata('nom') ) {			//redirect('Idenfication/index','refresh');			redirect();		}	}	public function pagination(){		$per_page = 10;		$config = array (					'base_url' => base_url().'Dashboard/acceuil/',					'total_rows' => $this->db->get('rdv')->num_rows(),					'per_page' => $per_page,					'num_links' => 5,					'use_page_numbers' => TRUE,					'display_pages' => TRUE,					'uri_segment' => 3				);  	    return $config;	}	public function acceuil(){			$cfg = $this->pagination();		$this->pagination->initialize($cfg);		if($this->uri->segment(3)){			$page = ($this->uri->segment(3));		}		else		{			$page = 1;		}	 	$res = $this->RendezVous_model->getallRDV($cfg['per_page'],$page);		$this->layout->getId($this->session->userdata('nom'));		if ( !empty($res) ){			$i = 0;			foreach ($res as $key => $value) {								$data['row'][$i] = $value;				$i++;			}			$this->layout->view('acceuil',$data);		}		else{			$data['row'] = array();			$this->layout->view('acceuil',$data);		}	}	public function filtreStatutRdv(){	}}?>

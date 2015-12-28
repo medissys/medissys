@@ -15,7 +15,8 @@
 |
 */
 //$config['base_url']	= 'http://localhost:8888/codeIgniter';
-$config['base_url']	= 'http://localhost:8888/medissys';
+//$config['base_url']	= 'http://localhost:8888/medissys';
+$config['base_url']	= 'http://localhost:80/medissys';
 
 /*
 |--------------------------------------------------------------------------

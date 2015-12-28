@@ -96,5 +96,10 @@
 
     <p class="error"> <?php //echo validation_errors(); ?> </p>
 </div>
+<div class="icon icon_modif">
+	<?php echo img('edit_dossier','png','modifier_dossier'); ?>
+</div>
 
-<?php  echo css_url('designComponent'); ?>
+<?php  echo css_url('designComponent'); 
+	   echo css_url('table');
+?>

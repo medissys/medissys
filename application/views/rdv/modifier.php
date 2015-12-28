@@ -12,7 +12,7 @@
 	<br/>
 
 	</div>
-
+	<p class="pForm"> <?php echo $this->pagination->create_links(); ?><p>
 	<table> 
 		<thead>
 			<tr>
@@ -32,7 +32,7 @@
 				<td> <strong> <?php echo $value->num_dossier; ?> </strong> </td>
 				<td> <?php echo mb_strtoupper($value->nom); ?> </td>
 				<td> <?php echo ucwords($value->prenom);?> </td>
-				<td> <?php echo $value->date; ?> </td>
+				<td> <?php echo date_format(date_create($value->date),"d-m-Y"); ?> </td>
 				<td> <?php echo $value->heure; ?> </td>
 				<td> <?php echo $value->type; ?> </td>
 			</tr>

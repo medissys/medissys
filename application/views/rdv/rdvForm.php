@@ -64,6 +64,9 @@
     <?php echo form_close(); /* Fin du formulaire */ ?>
 
 </div>
+<div class="icon">
+ 	<?php echo img('logo_rdv','png','logo rdv'); ?>
+</div>
 
 <p class="error"> 
 
