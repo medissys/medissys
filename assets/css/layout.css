@@ -7,7 +7,9 @@ html, body{
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
-   font: 13px/20px Helvetica, Tahoma, Verdana, sans-serif;
+   /*font: 13px/20px Helvetica, Tahoma, Verdana, sans-serif;*/
+   font-family: "Trebuchet MS";
+   font-size: 12px;
     background-image: url(../images/bg.jpg);
 }
 
@@ -126,7 +128,7 @@ ul.nav li a
     text-decoration:none;
     display: block;
     float: left;
-    font: bold 12px Arial;
+    /*font: bold 12px Arial;*/
     line-height: 26px;
 }
 ul.sub-nav li a{

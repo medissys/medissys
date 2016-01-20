@@ -1,6 +1,6 @@
   body {
     line-height: 1;
-    font: 13px/20px Helvetica,'Lucida Grande', Tahoma, Verdana, sans-serif;
+    font-family: "Trebuchet MS", 13px/20px Helvetica,'Lucida Grande', Tahoma, Verdana, sans-serif;
     color: #404040;
     background: #f3f3f3;
   }
@@ -16,7 +16,7 @@
   }
   
   input {
-    font-family: Helvetica,'Lucida Grande', Tahoma, Verdana, sans-serif;
+    font-family: "Trebuchet MS", Helvetica,'Lucida Grande', Tahoma, Verdana, sans-serif;
     font-size: 14px;
   }
   
