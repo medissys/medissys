@@ -70,7 +70,7 @@ class GestionPatient extends CI_Controller{
 
 			foreach ($res as $key => $value) {
 
-	        	$d = $value->nom.' '.$value->prenom.' - '.$value->numerodossier;
+	        	$d = mb_strtoupper($value->nom).' '.ucwords($value->prenom).' - '.$value->numerodossier;
 
 	        	$suggestions['suggestions'][] = $d;	
        		 }

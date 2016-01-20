@@ -5,7 +5,7 @@
         echo css_url('login'); 
         echo css_url('designComponent');
         echo js_url('jquery-2.min');
-        echo js_url('dataScript');
+        //echo js_url('dataScript');
 
      ?> 
     <head>
@@ -24,21 +24,24 @@
 
                     echo form_open('Identification/login');
 
-                    $login = array('name'=>'login','value'=> $id ,'placeholder'=>'Login ...'); 
+                    $login = array('name'=>'login','value'=> $id ,'placeholder'=>'Login', 'id' => 'login'); 
 
                 ?>
+                <span class="error"><strong> <?php echo $error; ?> </strong></span>
+<!--                 <div data-error='<?php //echo $msg; ?>' class="summaryError">
+                    <span class="textError"> <?php// echo $error; ?> </span>
+                </div> -->
+<!--                 <div data-error='' class="summaryError">
+                    <span class="textError"> <?php //echo 'Login et/ou mot de passe incorrect'; ?> </span>
+                </div> -->
 
-                <div data-error='<?php echo $msg; ?>' class="summaryError">
-                    <!--p class="error"> <?php // echo $error; ?> </p-->
-                    <span class="textError"> <?php echo $error; ?> </span>
-                </div>
 
                     <p> <?php echo form_input($login); ?> 
                     </p>
 
                     <?php 
 
-                    $pass= array('name'=>'password','value'=>'','placeholder'=>'Password'); ?>
+                    $pass= array('name'=>'password','value'=>'','placeholder'=>'Password', 'id' => 'mdp'); ?>
 
                     <p> <?php echo form_password($pass);   ?> 
                     </p>

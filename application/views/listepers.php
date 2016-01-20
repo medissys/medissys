@@ -41,7 +41,7 @@
 	</table>
 </div>
 <div class="icon">
-<?php echo img('user_logo','png','user_logo'); ?>
+<?php //echo img('user_logo','png','user_logo'); ?>
 </div>
 </div>
 

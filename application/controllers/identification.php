@@ -2,8 +2,6 @@
 
 class Identification extends CI_Controller
 {
-	protected $count = 0;
-
 	public function __construct(){
 
 		parent::__construct();
@@ -21,10 +19,7 @@ class Identification extends CI_Controller
 	public function index(){
 
 		$err = array( 'error' => '', 'msg' => 'false' ,'id' => '');
-
 		$this->load->view('login',$err);
-
-		echo 'on passe la';
 		//$this->login();
 	}
 
@@ -43,21 +38,17 @@ class Identification extends CI_Controller
 
 		if ( ($this->form_validation->run() == false) && empty($res)){
 			
-			echo $this->count;
-			//if ( $this->count == 0) {
-
-				$var = array('error' => AUTHENTIFICATION_ERROR, 'msg' => 'true', 'id' => $login);
-
-				$this->load->view('login',$var);
+			$var = array('error' => AUTHENTIFICATION_ERROR, 'msg' => 'true', 'id' => $login);
 				
-				$this->count++;
-			//}
+			$this->load->view('login',$var);
+			
 		}
 		else{
-
+			
 			$this->session->set_userdata('nom',$res[0]->nom);
 
 			redirect('Dashboard/acceuil');
+			
 		}
 	}
 }

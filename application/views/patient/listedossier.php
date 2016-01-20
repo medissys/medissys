@@ -1,6 +1,6 @@
-<?php   echo js_url('jquery-2.min');
+<?php   /*echo js_url('jquery-2.min');
 	    echo js_url('jsTab');
-	    echo js_url('cnx');
+	    echo js_url('cnx');*/
 ?>
 <div id="sub-menu">
 
@@ -22,7 +22,7 @@
 
 	<h3 class="sub-title"> - LISTE DES DOSSIERS - </h3>
 	<p class="pForm"> <?php echo $this->pagination->create_links(); ?><p>
-	<div class="table">
+	<div class="table table-no-scroll">
 		<table> 
 			<thead>
 				<tr>
@@ -41,8 +41,9 @@
 			<tbody> 
 			<?php foreach ($row as $value) {
 			?>
-				<tr>
-					<td> <strong> <?php echo anchor('Gestionpatient/listeDossier',$value->numerodossier,array('class'=> 'linkTable show-content','attr'=>$value->numerodossier)); ?> </strong> </td>
+				<tr class="linkClickable" data-number='"<?php echo $value->num_dossier; ?>"'  onclick="">
+					<td> <strong> <?php echo $value->numerodossier; ?> </strong> </td>
+					<!-- <td> <strong> <?php //echo anchor('Gestionpatient/listeDossier',$value->numerodossier,array('class'=> 'linkTable show-content','attr'=>$value->numerodossier)); ?> </strong> </td> -->
 					<td> <?php echo mb_strtoupper($value->nom); ?> </td>
 					<td> <?php echo ucwords($value->prenom);?> </td>
 					<td> <?php echo $value->telephone;?> </td>
@@ -59,41 +60,8 @@
 	</div>
 </div>
 <div class="icon icon_edit">
-	<?php echo img('logo_liste','png','liste dossier'); ?>
+	<?php //echo img('logo_liste','png','liste dossier'); ?>
 </div>
-
-<!--div class="hide-content">
-		
-	<h3 class="sub-title"> - HISTORIQUE DES CONSULTATIONS - </h3>
-
-	<table> 
-		<thead>
-			<tr>
-				<th></th>
-				<th>DATE CONSULTATION</th>
-				<th>SYMPTOMES</th>
-				<th>OBSERVATIONS</th>
-				<th>COMMENTAIRES</th>
-			</tr>
-		</thead>
-		<tbody>
-			<?php 
-				//$i = 0;
-				//foreach ($board as $key => $value) { 
-			?>
-
-				<tr>
-					<td><?php //echo ++$i; ?></td>
-					<td><?php //echo $value->dateconsultation; ?> </td>
-					<td><?php //echo $value->symptomes; ?> </td>
-					<td><?php //echo $value->observations; ?> </td>
-					<td><?php //echo $value->commentaires; ?> </td>
-				</tr>
-				<?php //} ?>
-		</tbody>
-	</table>
-</div-->
-
 
 <?php 
 	  echo css_url('designComponent'); 

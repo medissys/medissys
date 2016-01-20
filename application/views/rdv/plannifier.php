@@ -27,8 +27,9 @@
 		</thead>
 		<tbody> 
 		<?php foreach ($row as $key => $value) { ?>
-			<tr>
+			<tr class="linkClickable" data-number='"<?php echo $value->numerodossier; ?>"'  onclick="">
 				<td> <strong> <?php echo anchor('RendezVous/ouvrirDossier/'.$value->numerodossier,$value->numerodossier,'class="linkTable"'); ?> </strong></td>
+				<!--td> <strong> <?php echo $value->numerodossier; ?> </strong></td-->
 				<td> <?php echo mb_strtoupper($value->nom); ?> </td>
 				<td> <?php echo ucwords($value->prenom); ?> </td>
 			</tr>

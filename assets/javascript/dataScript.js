@@ -1,32 +1,43 @@
 $(function(){
 
-	console.log('test');
-
-	/*var marker = $('.summaryError').attr('data-class');
-
-	if ( marker == '' ){
-
-		$('.summaryError').hide();
-
-		$('.summaryError').attr('data-class','selected');
-
-	}
-  	*/
-
   	$('.submitForm').click(function(event){
-  		
-  		var data = $('.summaryError').attr('data-error');
+     // event.preventDefault();
+  		/* Récupération des valeurs des champs du formulaire */
+      dataForm = {
+          login : $('#login').val(),
+          mdp : $("#mdp").val()
+      };
 
-  		//console.log('test');
+      /* Transmission au serveur */
+      $.ajax({
+        url     : 'Identification/login',
+        method  : 'POST',
+        data    : dataForm,
+        success : function(data,success,xhr){
+          console.log(data)
+          if ( data ){
+            $('.summaryError').fadeIn();
+          }
+          else{
 
-  		if ( data ) {
+             document.location.href = 'Dashboard/acceuil';
+          }
+         
+          /*if ( data == "test2" ){
+            document.location.href = 'Dashboard/acceuil';
+            console.log(location.href)
+          }
+          //$('.summaryError').fadeIn();
+          //console.log(xhr);
+          /*$('.summaryError').fadeIn();
+          $('.login').append(xhr)
+          /*if (xhr.responseText == "test1"){
 
-  			$('.summaryError').fadeIn();
+            $('.summaryError').fadeIn();
+          }*/
 
-  			//event.preventDefault();
-
-  		}
-
+        }
+      });
+      return false;
   	});
-
 });
