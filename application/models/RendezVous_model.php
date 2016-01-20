@@ -29,7 +29,7 @@ class RendezVous_model extends CI_Model{
 						->join($this->tableS.' s', 'r.idStatut = s.id')
 						->order_by('r.date','asc')
 						->limit($limit,($page-1)*$limit)
-						//->where('r.date >=', date('Y-m-d')) /* On récupère les dates de rdv >= àla date du jour */
+						->where('r.date >=', date('Y-m-d')) /* On récupère les dates de rdv >= àla date du jour */
 						->get()
 						->result();
 	}

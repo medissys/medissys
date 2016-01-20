@@ -86,6 +86,9 @@
   .error{
   
       color: red;
+      font-family: "Trebuchet MS";
+      font-size: 12px;
+      font-weight: bold;
   }
   
   .success span{

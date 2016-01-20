@@ -28,9 +28,9 @@
 
                 ?>
                 <span class="error"><strong> <?php echo $error; ?> </strong></span>
-<!--                 <div data-error='<?php //echo $msg; ?>' class="summaryError">
-                    <span class="textError"> <?php// echo $error; ?> </span>
-                </div> -->
+                <!-- <div data-error='<?php //echo $msg; ?>' class="summaryError">
+                    <span class="textError"> <?php // echo $error; ?> </span>
+                </div -->
 <!--                 <div data-error='' class="summaryError">
                     <span class="textError"> <?php //echo 'Login et/ou mot de passe incorrect'; ?> </span>
                 </div> -->

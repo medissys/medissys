@@ -12,6 +12,7 @@ class Identification extends CI_Controller
 
 		$this->load->library('form_validation'); /* chargement de la librairie de validation des formulaires */
 		$this->load->library('layout');
+		$this->load->model('Connexion_model');
 
 
 	}
@@ -25,18 +26,20 @@ class Identification extends CI_Controller
 
 	public function login(){
 
+		$res = array();
+
 		$login = $this->input->post('login');
 		$mdp = $this->input->post('password');
-
+		
 		$this->form_validation->set_rules('login','"Login"','trim|required|xss_clean');
 		$this->form_validation->set_rules('mot de passe','"Mot de passe"','trim|required|xss_clean');
 
-		$this->load->model('Connexion_model');
+		if (!empty($login) && !empty($mdp)){
 
-		$res = $this->Connexion_model->getConnexion($login,$mdp);
+			$res = $this->Connexion_model->getConnexion($login,$mdp);
+		}
 
-
-		if ( ($this->form_validation->run() == false) && empty($res)){
+		if ( $this->form_validation->run() == FALSE && empty($res)){
 			
 			$var = array('error' => AUTHENTIFICATION_ERROR, 'msg' => 'true', 'id' => $login);
 				
@@ -51,5 +54,6 @@ class Identification extends CI_Controller
 			
 		}
 	}
+
 }
 

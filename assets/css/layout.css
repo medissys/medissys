@@ -10,7 +10,7 @@ html, body{
    /*font: 13px/20px Helvetica, Tahoma, Verdana, sans-serif;*/
    font-family: "Trebuchet MS";
    font-size: 12px;
-    background-image: url(../images/bg.jpg);
+    background-image: url(../images/bg.jpg) repeat-y;
 }
 
 div.firstBar{
