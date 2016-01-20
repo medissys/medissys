@@ -45,6 +45,7 @@ class RendezVous extends CI_Controller{
 					'planning' => array(
 									'base_url' => base_url().'RendezVous/planning/',
 									'total_rows' => $this->db->get('rdv')->num_rows(),
+									//'total_rows' => $this->db->get_where('rdv',"date >= date('Y-m-d')")->num_rows(),
 									'per_page' => $per_page,
 									'num_links' => 5,
 									'use_page_numbers' => TRUE,
@@ -79,7 +80,6 @@ class RendezVous extends CI_Controller{
 	public function planning(){
 
 		$cfg = $this->pagination();
-
 
 		$this->pagination->initialize($cfg['planning']);
 

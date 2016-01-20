@@ -19,7 +19,9 @@
 
 <p class="pForm"> <strong> Nouveau dossier ::: Creer </strong> </p>
   
-	<?php echo form_open('Gestionpatient/creerDossier'); 
+	<?php 
+    
+    echo form_open('Gestionpatient/creerDossier'); 
 		
 		  foreach ($c as $index => $value){
 		  	foreach ($value as $key => $val) {
@@ -89,8 +91,8 @@
      <p class="pForm"> <?php echo form_textarea($symp); ?>
                        <?php echo form_textarea($diag); ?>
      </p>
-
-    <p class="pForm"> <?php echo form_submit('commit','OK'); ?> </p> 
+     <?php $attr = array ('name' => 'commit', 'class' => 'createDossier'); ?>
+    <p class="pForm"> <?php echo form_submit($attr,'OK'); ?> </p> 
 
     <?php echo form_close(); /* Fin du formulaire */ ?>
 
@@ -104,8 +106,8 @@
 <?php 
       echo css_url('designComponent');
       echo css_url('table');
-      //echo js_url('jquery-2.min');
-	    //echo js_url('loader');
+      /*echo js_url('jquery-2.min');
+	    echo js_url('script');*/
 ?>
 
 

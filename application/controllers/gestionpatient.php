@@ -223,7 +223,7 @@ class GestionPatient extends CI_Controller{
 
 		$config['base_url'] = base_url().'GestionPatient/listeDossier/';
  		$config['total_rows'] = $this->db->get('patient')->num_rows();
- 		$config['per_page'] = 5;
+ 		$config['per_page'] = 10;
   		$config['num_links'] = 5;
  		$config['use_page_numbers'] = TRUE;
  		$config['display_pages'] = TRUE;

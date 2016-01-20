@@ -28,7 +28,7 @@
 		<?php foreach ($row as $key => $value) {
 
 		?>
-			<tr class="linkClickable" data-number='"<?php echo $value->num_dossier; ?>"' onclick="document.location.href='modifier/<?php echo $value->num_dossier; ?>'">
+			<tr class="linkClickable" data-number='"<?php echo $value->num_dossier; ?>"' onclick="document.location.href='<?php echo base_url(); ?>RendezVous/modifier/<?php echo $value->num_dossier; ?>'">
 				<td> <strong> <?php echo $value->num_dossier; ?> </strong> </td>
 				<td> <?php echo mb_strtoupper($value->nom); ?> </td>
 				<td> <?php echo ucwords($value->prenom);?> </td>
